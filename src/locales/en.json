@@ -1,0 +1,54 @@
+{
+  "themes": {
+    "light": "light",
+    "dark": "dark"
+  },
+  "btn": {
+    "confirm": "Confirm",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "login": "Log In",
+    "logout": "Log Out",
+    "close": "Close",
+    "dashboard": "Back to Dashboard",
+    "start": "Start",
+    "pause": "Pause"
+  },
+  "hint": {
+    "projectName": "vue-vuetify-admin",
+    "username": "Username",
+    "usernameRequired": "Username is required",
+    "password": "Password",
+    "passwordRequired": "Password is required",
+    "loginAgain": "You need to login again",
+    "forbidden": "Forbidden",
+    "notFound": "Not Found",
+    "internalServerError": "Internal Server Error",
+    "noResponse": "No Response",
+    "requestError": "Request Error"
+  },
+  "drawer": {
+    "narrow": "narrow navigation",
+    "dashboard": "dashboard",
+    "chart": "chart",
+    "editor": "editor",
+    "markdownEditor": "markdown editor",
+    "richTextEditor": "rich text editor",
+    "todo": "todo",
+    "file": "file",
+    "fileSave": "file save",
+    "fileZip": "file zip",
+    "nested": "nested",
+    "nestedLevel1": "nested-level1",
+    "nestedLevel1_1": "nested-level1-1",
+    "nestedLevel1_2": "nested-level1-2",
+    "nestedLevel2": "nested-level2",
+    "nestedLevel2_1": "nested-level2-1",
+    "nestedLevel2_2": "nested-level2-2",
+    "roles": "roles",
+    "admin": "admin",
+    "manager": "manager",
+    "user": "user",
+    "anonymous": "anonymous"
+  }
+}

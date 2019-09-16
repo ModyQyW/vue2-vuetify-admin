@@ -1,0 +1,54 @@
+{
+  "themes": {
+    "light": "浅色",
+    "dark": "深色"
+  },
+  "btn": {
+    "confirm": "确定",
+    "reset": "重置",
+    "cancel": "取消",
+    "login": "登录",
+    "logout": "退出登录",
+    "close": "关闭",
+    "dashboard": "返回仪表板",
+    "start": "启动",
+    "pause": "暂停"
+  },
+  "hint": {
+    "projectName": "vue-vuetify-admin",
+    "username": "账号",
+    "usernameRequired": "必须填写账号",
+    "password": "密码",
+    "passwordRequired": "必须填写密码",
+    "loginAgain": "需要重新登录",
+    "forbidden": "禁止访问",
+    "notFound": "未找到接口/页面",
+    "internalServerError": "服务器内部错误",
+    "noResponse": "服务器无响应",
+    "requestError": "请求错误"
+  },
+  "drawer": {
+    "narrow": "收缩导航",
+    "dashboard": "仪表板",
+    "chart": "图表",
+    "editor": "编辑器",
+    "markdownEditor": "Markdown 编辑器",
+    "richTextEditor": "富文本编辑器",
+    "todo": "待办",
+    "file": "文件",
+    "fileSave": "文件保存",
+    "fileZip": "文件压缩",
+    "nested": "嵌套",
+    "nestedLevel1": "嵌套层级1",
+    "nestedLevel1_1": "嵌套层级1-1",
+    "nestedLevel1_2": "嵌套层级1-2",
+    "nestedLevel2": "嵌套层级2",
+    "nestedLevel2_1": "嵌套层级2-1",
+    "nestedLevel2_2": "嵌套层级2-2",
+    "roles": "角色",
+    "admin": "admin",
+    "manager": "manager",
+    "user": "user",
+    "anonymous": "未命名"
+  }
+}
