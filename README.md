@@ -1,34 +1,7 @@
 # vue-vuetify-admin
 
-## Project setup
-```
-yarn install
-```
+A simple admin template.
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+TODO: complete README.md
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+TODO: add functions
