@@ -56,7 +56,6 @@ export default {
   },
   computed: {
     routePath () {
-      console.log('this.$route', this.$route)
       return this.$route.path
     }
   },

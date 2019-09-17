@@ -107,7 +107,7 @@ export default {
   data () {
     return {
       isFullscreen: false,
-      enableFullscreen: screenfull.enabled,
+      enableFullscreen: screenfull.isEnabled,
       languagesList: [{
         name: '简体中文',
         value: 'zh-Hans'

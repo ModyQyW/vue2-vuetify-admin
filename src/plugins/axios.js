@@ -3,14 +3,17 @@ import axios from 'axios'
 
 // dev environment api url
 // 测试环境接口 Url
-const devUrl = 'https://www.easy-mock.com/mock/5d78ae3a401c6971fe83cdf4/admin-server'
+const devUrl = 'http://localhost:3000/api'
 // prod environment api url
 // 生产环境接口 Url
-const prodUrl = 'https://www.easy-mock.com/mock/5d78ae3a401c6971fe83cdf4/admin-server'
+const prodUrl = ''
 const baseUrl = process.env.NODE_ENV === 'development' ? devUrl : prodUrl
+// white list don't add x-version and x-token
+// 不添加 x-version 和 token 的白名单
+const urlWhiteList = ['api.github.com']
 
 // X-Version
-const version = 'vue-vuetify-admin/0.1.0'
+const version = 'vue-vuetify-admin/0.2.0'
 
 // base url
 // 接口 url 前缀
@@ -25,8 +28,7 @@ axios.defaults.withCredentials = false
 axios.defaults.headers = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-  'x-version': version
+  'X-Requested-With': 'XMLHttpRequest'
 }
 // 验证响应状态
 // validate response status
@@ -44,9 +46,15 @@ axios.interceptors.request.use(
     // set Token or something here
     // 在这里设置 token 或别的登录态
     const token = window.localStorage.getItem('token')
+    for (let i = 0, len = urlWhiteList.length; i < len; i += 1) {
+      if (config.url.includes(urlWhiteList[i])) {
+        return config
+      }
+    }
     if (token) {
       config.headers['x-token'] = token
     }
+    config.headers['x-version'] = version
     return config
   }
 )
@@ -115,24 +123,11 @@ const upload = (url, data) => axios({
   data
 })
 
-const download = (url, data) => axios({
-  method: 'post',
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-    'Content-Type': 'application/json',
-    Accept: 'application/octet-stream',
-    'x-version': version
-  },
-  url,
-  data
-})
-
 // link to prototype
 Vue.prototype.$axios = axios
 
 Vue.prototype.$req = {
   get,
   post,
-  upload,
-  download
+  upload
 }

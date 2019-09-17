@@ -77,11 +77,11 @@ const user = {
     },
     // set info
     // 设置相关信息
-    setInfoSync (state, data) {
-      state.id = data.id
-      state.username = data.username
-      state.nickname = data.nickname
-      state.role = data.role
+    setInfoSync (state, { id, username, nickname, role }) {
+      state.id = id
+      state.username = username
+      state.nickname = nickname
+      state.role = role
     },
     // set language
     // 设置语言
