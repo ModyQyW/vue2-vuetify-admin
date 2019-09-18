@@ -105,6 +105,35 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 - [sass](https://github.com/sass/dart-sass) - A pure JavaScript implementation of [Sass](https://sass-lang.com/)
 - [stylelint](https://stylelint.io/) - A mighty, modern linter that helps you avoid errors and enforce conventions in your styles
 
+## Features
+
+- Responsive
+- Authentication
+  - Page permission
+- I18n: English & Simplified Chinese
+- Two themes: light and dark
+- Four-level routing, corresponding to three-level drawer navigation
+- Screenfull
+- Exception pages
+- Charts
+- Editor
+  - Markdown editor
+  - Rich text editor
+- Todo list
+- File
+  - File save
+  - File zip
+
+TODO:
+
+- Full documents about how to modify
+- Clipboard
+- Dynamic breadcrumbs
+- Excel
+  - Excel upload
+  - Excel preview
+  - Excel download
+
 ## Browsers Support
 
 Please read [.browerslistrc](./.browserslistrc) for details. You can get actual supported browsers [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead). Global coverage is 88.61%.

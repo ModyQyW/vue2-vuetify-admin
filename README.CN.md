@@ -105,6 +105,35 @@ yarn start
 - [sass](https://github.com/sass/dart-sass)：[Sass](https://sass-lang.com/) 的纯 JavaScript 实现
 - [stylelint](https://stylelint.io/)：一个强大的，现代的规范工具，可以帮助避免错误并在样式中强制执行规范
 
+## 特性
+
+- 响应时
+- 鉴权
+  - 页面级权限
+- I18n：英语 & 简体中文
+- 两个主题：浅色和深色
+- 四层级路由，对应三层级抽屉导航
+- 全屏
+- 异常页
+- 图表
+- 编辑器
+  - Markdown 编辑器
+  - 富文本编辑器
+- 待办
+- 文件
+  - 文件保存
+  - 文件压缩
+
+TODO:
+
+- 完整的文档，教导如何修改
+- 剪贴板
+- 动态面包屑
+- Excel
+  - Excel 上传
+  - Excel 预览
+  - Excel 下载
+
 ## 浏览器支持
 
 有关详细信息，请阅读 [.browerslistrc](./.browsersseslistrc)。你可以在 [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead) 查看实际支持的浏览器。全球覆盖率为 88.61％。
