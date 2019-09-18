@@ -8,6 +8,8 @@ const prodGzipExt = ['html', 'js', 'css', 'json', 'ttf', 'eot', 'otf', 'woff', '
 
 module.exports = {
   // public path
+  // if deploy on https://www.abc.com/, set L14 to '/'
+  // if deploy on https://www.abc.com/def/, set L14 to '/def/'
   publicPath: isProd
     ? '/' // production
     : '/', // development
@@ -37,9 +39,9 @@ module.exports = {
     }
   },
 
-  // split packages
   configureWebpack: (config) => {
     if (isProd) {
+      // externals
       config.externals = {
         vue: 'Vue',
         'vue-router': 'VueRouter',
@@ -47,6 +49,7 @@ module.exports = {
         axios: 'axios',
         moment: 'moment'
       }
+      // gzip
       config.plugins.push(
         new CompressionWebpackPlugin({
           test: new RegExp(`\\.(${prodGzipExt.join('|')})$`),
@@ -57,20 +60,12 @@ module.exports = {
   },
 
   chainWebpack: (config) => {
+    // set alias
     config.resolve.alias
       .set('@', resolve('src'))
       .set('@c', resolve('src/components'))
       .set('@a', resolve('src/assets'))
-    // https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-template-compiler/README.md#%E9%80%89%E9%A1%B9
-    config.module
-      .rule('vue')
-      .use('vue-loader')
-      .loader('vue-loader')
-      .tap((options) => {
-        options.compilerOptions.preserveWhitespace = true
-        return options
-      })
-      .end()
+    // split chunks
     config.when(
       isProd,
       (config) => {
