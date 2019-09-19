@@ -43,7 +43,6 @@ const publicApi = {
               keys.forEach((key) => {
                 total += res[key]
               })
-              console.log('total', total)
               keys.forEach((key) => {
                 res[key] = `${(res[key] / total * 100).toFixed(2)}%`
               })

@@ -87,23 +87,24 @@ export const immutableRoutes = [
   },
   {
     path: '/editor',
-    redirect: { name: 'markdown-editor' },
+    name: 'editor',
+    redirect: { name: 'editor-markdown' },
     component: Layout,
     children: [
       {
-        name: 'markdown-editor',
+        name: 'editor-markdown',
         path: 'markdown',
         component: () => import('@/views/editor/markdown-editor'),
         meta: {
-          title: 'drawer.markdownEditor'
+          title: 'drawer.editor-markdown'
         }
       },
       {
-        name: 'rich-text-editor',
+        name: 'editor-rich-text',
         path: 'rich-text',
         component: () => import('@/views/editor/rich-text-editor'),
         meta: {
-          title: 'drawer.richTextEditor'
+          title: 'drawer.editor-rich-text'
         }
       }
     ],
@@ -129,6 +130,7 @@ export const immutableRoutes = [
   },
   {
     path: '/file',
+    name: 'file',
     redirect: { name: 'file-save' },
     component: Layout,
     children: [
@@ -137,7 +139,7 @@ export const immutableRoutes = [
         path: 'save',
         component: () => import('@/views/file/file-save.vue'),
         meta: {
-          title: 'drawer.fileSave'
+          title: 'drawer.file-save'
         }
       },
       {
@@ -145,7 +147,7 @@ export const immutableRoutes = [
         path: 'zip',
         component: () => import('@/views/file/file-zip.vue'),
         meta: {
-          title: 'drawer.fileZip'
+          title: 'drawer.file-zip'
         }
       }
     ],
@@ -156,61 +158,62 @@ export const immutableRoutes = [
   },
   {
     path: '/nested',
-    redirect: { name: 'nested-level1-1' },
+    name: 'nested',
+    redirect: { name: 'nested-level1-inner1' },
     component: Layout,
     children: [
       {
         path: 'level1',
         name: 'nested-level1',
-        redirect: { name: 'nested-level1-1' },
+        redirect: { name: 'nested-level1-inner1' },
         component: () => import('@/views/nested/level1'),
         children: [
           {
-            path: 'level1-1',
-            name: 'nested-level1-1',
-            component: () => import('@/views/nested/level1/level1-1'),
+            path: 'inner1',
+            name: 'nested-level1-inner1',
+            component: () => import('@/views/nested/level1/inner1'),
             meta: {
-              title: 'drawer.nestedLevel1_1'
+              title: 'drawer.nested-level1-inner1'
             }
           },
           {
-            path: 'level1-2',
-            name: 'nested-level1-2',
-            component: () => import('@/views/nested/level1/level1-2'),
+            path: 'inner2',
+            name: 'nested-level1-inner2',
+            component: () => import('@/views/nested/level1/inner2'),
             meta: {
-              title: 'drawer.nestedLevel1_2'
+              title: 'drawer.nested-level1-inner2'
             }
           }
         ],
         meta: {
-          title: 'drawer.nestedLevel1'
+          title: 'drawer.nested-level1'
         }
       },
       {
         path: 'level2',
         name: 'nested-level2',
-        redirect: { name: 'nested-level2-1' },
+        redirect: { name: 'nested-level2-inner1' },
         component: () => import('@/views/nested/level2'),
         children: [
           {
-            path: 'level2-1',
-            name: 'nested-level2-1',
-            component: () => import('@/views/nested/level2/level2-1'),
+            path: 'inner1',
+            name: 'nested-level2-inner1',
+            component: () => import('@/views/nested/level2/inner1'),
             meta: {
-              title: 'drawer.nestedLevel2_1'
+              title: 'drawer.nested-level2-inner1'
             }
           },
           {
-            path: 'level2-2',
-            name: 'nested-level2-2',
-            component: () => import('@/views/nested/level2/level2-2'),
+            path: 'inner2',
+            name: 'nested-level2-inner2',
+            component: () => import('@/views/nested/level2/inner2'),
             meta: {
-              title: 'drawer.nestedLevel2_2'
+              title: 'drawer.nested-level2-inner2'
             }
           }
         ],
         meta: {
-          title: 'drawer.nestedLevel2'
+          title: 'drawer.nested-level2'
         }
       }
     ],

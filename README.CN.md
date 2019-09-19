@@ -52,7 +52,7 @@ yarn
 yarn dev
 
 # terminal / command line 2
-# clone corresponding backend server
+# clone corresponding backend server for developing
 git clone git@github.com:ModyQyW/backend-server.git
 
 # enter the server directory
@@ -128,7 +128,6 @@ TODO:
 
 - 完整的文档，教导如何修改
 - 剪贴板
-- 动态面包屑
 - Excel
   - Excel 上传
   - Excel 预览

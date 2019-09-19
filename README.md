@@ -6,7 +6,7 @@ English | [简体中文](README.CN.md)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#Deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -52,7 +52,7 @@ yarn
 yarn dev
 
 # terminal / command line 2
-# clone corresponding backend server
+# clone corresponding backend server for developing
 git clone git@github.com:ModyQyW/backend-server.git
 
 # enter the server directory
@@ -128,7 +128,6 @@ TODO:
 
 - Full documents about how to modify
 - Clipboard
-- Dynamic breadcrumbs
 - Excel
   - Excel upload
   - Excel preview

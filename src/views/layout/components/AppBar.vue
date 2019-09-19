@@ -6,16 +6,26 @@
     />
     <v-toolbar-title>
       <a
-        class="text-uppercase"
-        :class="{
-          'white--text': theme === 'dark',
-          'black--text': theme === 'light'
-        }"
+        class="text-uppercase white--text"
         href="https://github.com/ModyQyW/vue-vuetify-admin"
       >
         vue-vuetify-admin
       </a>
     </v-toolbar-title>
+    <v-breadcrumbs
+      class="d-none d-md-flex"
+      :items="breadcrumbs"
+    >
+      <template v-slot:item="props">
+        <v-breadcrumbs-item
+          :exact="props.item.exact"
+          :to="props.item.to"
+          :disabled="props.item.disabled"
+        >
+          {{ props.item.text }}
+        </v-breadcrumbs-item>
+      </template>
+    </v-breadcrumbs>
     <v-spacer />
     <v-menu offset-y transition="slide-y-transition">
       <template v-slot:activator="{ on }">
@@ -92,8 +102,10 @@
 
 <script>
 import screenfull from 'screenfull'
+import getBreadcrumbs from '../mixins/breadcrumbs'
 
 export default {
+  mixins: [getBreadcrumbs],
   props: {
     theme: {
       type: String,
@@ -132,6 +144,27 @@ export default {
     },
     fullscreenIcon () {
       return this.isFullscreen ? 'fullscreen_exit' : 'fullscreen'
+    },
+    breadcrumbs () {
+      const breadcrumbs = this.$route.path.split('/').slice(1)
+      for (let i = 1, len = breadcrumbs.length; i < len; i += 1) {
+        breadcrumbs[i] = `${breadcrumbs[i - 1]}-${breadcrumbs[i]}`
+        breadcrumbs[i - 1] = {
+          text: this.$t(`drawer.${breadcrumbs[i - 1]}`),
+          exact: true,
+          disabled: false,
+          to: { name: breadcrumbs[i - 1] }
+        }
+        if (i === len - 1) {
+          breadcrumbs[i] = {
+            text: this.$t(`drawer.${breadcrumbs[i]}`),
+            exact: true,
+            disabled: true,
+            to: { name: breadcrumbs[i] }
+          }
+        }
+      }
+      return breadcrumbs
     }
   },
   mounted () {
@@ -139,6 +172,7 @@ export default {
     screenfull.on('change', () => {
       this.isFullscreen = screenfull.isFullscreen
     })
+    console.log('this.breadcrumbs', this.breadcrumbs)
   },
   methods: {
     handleChangeLanguage (language) {

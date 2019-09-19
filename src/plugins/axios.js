@@ -77,9 +77,15 @@ axios.interceptors.response.use(
       // console.log(error.response.headers);
       const { status } = error.response
       switch (status) {
-        case 403: err.msg = 'hint.forbidden'; break
-        case 404: err.msg = 'hint.notFound'; break
-        case 500: err.msg = 'hint.internalServerError'; break
+        case 403:
+          err.msg = 'hint.forbidden'
+          break
+        case 404:
+          err.msg = 'hint.notFound'
+          break
+        case 500:
+          err.msg = 'hint.internalServerError'
+          break
         default: break
       }
     } else if (error.request) {

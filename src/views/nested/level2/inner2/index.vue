@@ -1,3 +1,3 @@
 <template>
-  <p>level2-2</p>
+  <p>inner2</p>
 </template>
