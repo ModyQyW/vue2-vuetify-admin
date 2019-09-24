@@ -1,25 +1,19 @@
 // the layout for most pages
-// 大多数页面用到的布局
 import Layout from '@/views/layout'
 
 // module authentication
-// 认证模块
 import authenticationRoutes from './modules/authentication'
 
 // module exception
-// 异常模块
 import exceptionRoutes from './modules/exception'
 
 // a set for authentication routes using for judgement
-// 认证路由路径集合，用于判断
 export const authenticationRouteSet = new Set(authenticationRoutes.map(route => route.path))
 
 // a set for exception routes using for judgement
-// 异常路由路径集合，用于判断
 export const exceptionRouteSet = new Set(exceptionRoutes.map(route => route.path))
 
-/*
- *
+/**
  * route structure
  * max depth: 4
  * In all cases I met, 4 is fine
@@ -29,29 +23,26 @@ export const exceptionRouteSet = new Set(exceptionRoutes.map(route => route.path
  * 4th: v-list-item
  * If you have to use 5 or more, rethink: is it neccessary?
  *
- * {
- *   name: <String, route name>,
- *   path: <String, route path>,
- *   meta: {
- *     roles:  <Array, an array for roles, default value is []
- *             meaning that every role can visit this route>,
- *     title:  <String, a string for title, default value is
- *             '' but should set personally if it will be
- *             showed in the drawer, will be dealed with
- *             i18n>,
- *     hidden: <Boolean, show in the left drawer or not,
- *             default value is false>,
- *     icon:   <String, a string for icon name, default value
- *             is '' but should set personally if it will be
- *             showed in the drawer>,
- *   },
- *   children: <Array, an array for routes>,
- * }
+ * @typedef Route
+ * @property name        {String}    route name
+ * @property path        {String}    route path, required
+ * @property meta        {Object}
+ * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
+ *                                   every role can visit
+ * @property meta.title  {String}    a string for title, default empty string, will
+ *                                   be dealed with i18n, should be set personally
+ *                                   if it will be shown in the drawer
+ * @property meta.hidden {Boolean}   hide in the drawer or not, default false
+ * @property meta.icon   {String}    a string for icon name, default empty string,
+ *                                   should be set personally if it will be shown
+ *                                   in the drawer
+ * @property children    {Route[]}
  *
  */
 
-// immutable routes: every role can visit
-// 静态路由: 每个角色都能访问
+/**
+ * @description the routes for every role
+ */
 export const immutableRoutes = [
   ...authenticationRoutes,
   ...exceptionRoutes,
@@ -224,13 +215,12 @@ export const immutableRoutes = [
   }
 ]
 
-// mutable routes: specific role can visit
-// use 404 to match all the other pages, so
-// 404 should be the last one
-// 动态路由：特定角色才能访问
-// 用 404 匹配其他所有页面，所以 404 应该要放到最后
+/**
+ * @description the routes for specific role
+ *              use 404 to match all the other pages
+ *              so 404 should be the last one
+ */
 export const mutableRoutes = [
-  // 404 matches all the other pages
   {
     path: '*',
     redirect: { name: '404' },

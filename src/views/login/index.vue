@@ -192,7 +192,7 @@ export default {
           username: this.username,
           password: this.password
         }).then((res) => {
-          if (res.success) {
+          if (res.suc) {
             this.$router.replace({ name: this.redirect || 'dashboard' })
           } else {
             this.snackbarI18nText = res.msg

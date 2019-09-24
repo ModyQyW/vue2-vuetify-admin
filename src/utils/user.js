@@ -4,24 +4,22 @@ const languageKey = 'language'
 const defaultLanguage = 'en'
 
 /**
- * get project language
- * 获取项目语言
- * @returns { String }
+ * @description get project language
+ * @return {String} language
  */
 const getLanguage = () => window.localStorage.getItem(languageKey) || defaultLanguage
 
 /**
- * set project language, persistence
- * 设置项目语言，持久化
- * @param { String } { language = defaultLanguage }
+ * @description set project language, persistence
+ * @param {Object} annoymous
+ * @param {String} annoymous.language
  */
 const setLanguage = ({ language = defaultLanguage }) => {
   window.localStorage.setItem(languageKey, language)
 }
 
 /**
- * remove project setting language
- * 移除项目当前设置的语言
+ * @description remove project setting language
  */
 const removeLanguage = () => {
   window.localStorage.removeItem(languageKey)
@@ -56,58 +54,52 @@ const removeToken = () => window.localStorage.removeItem(tokenKey)
 /* permission and routes */
 
 /**
- * detect whether the route matches the role
- * 检测路由项与角色是否匹配
- * @param { Object } route
- * @param { String= } route.name
- * @param { String } route.path
- * @param { Object } route.meta
- * @param { Number[]= } route.meta.roles
- * @param { String= } route.meta.title
- * @param { Boolean= } route.meta.hidden
- * @param { String= } route.meta.icon
- * @param { Object[]= } route.children
- * @param { Number } role
- * @returns { Boolean }
+ * @typedef Route
+ * @property name        {String}    route name
+ * @property path        {String}    route path, required
+ * @property meta        {Object}
+ * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
+ *                                   every role can visit
+ * @property meta.title  {String}    a string for title, default empty string, will
+ *                                   be dealed with i18n, should be set personally
+ *                                   if it will be shown in the drawer
+ * @property meta.hidden {Boolean}   hide in the drawer or not, default false
+ * @property meta.icon   {String}    a string for icon name, default empty string,
+ *                                   should be set personally if it will be shown
+ *                                   in the drawer
+ * @property children    {Route[]}
+ */
+
+/**
+ * @descriptiondetect whether the route matches the role
+ * @param {Route}    route
+ * @param {Number}   role
+ * @return {Boolean}
  */
 const hasPermission = (route, role) => {
   // the route has meta and meta.roles prop
-  // 路由项有 meta 和 meta.roles
   if (route.meta && route.meta.roles) {
     return route.meta.roles.includes(role)
   }
   // the route has no meta or meta.roles prop
-  // 路由项没有 meta 或 meta.roles
   return true
 }
 
 /**
- * filter mutable routes
- * 筛选动态路由
- * @param { Object[] } routes
- * @param { String= } routes[].name
- * @param { String } routes[].path
- * @param { Object } routes[].meta
- * @param { Number[]= } routes[].meta.roles
- * @param { String= } routes[].meta.title
- * @param { Boolean= } routes[].meta.hidden
- * @param { String= } routes[].meta.icon
- * @param { Object[]= } routes[].children
- * @param { Number } role
- * @returns { Object[] }
+ * @description filter mutable routes
+ * @param {Route[]}   routes
+ * @param {Number}    role
+ * @returns {Route[]}
  */
 const filterMutableRoutes = (routes, role) => {
   const res = []
   // forEach judge
-  // forEach 判断
   routes.forEach((route) => {
     const tmp = { ...route }
     // detect whether the route matches the role
-    // 检测路由项与角色是否匹配
     if (hasPermission(tmp, role)) {
       if (tmp.children) {
         // recursion
-        // 递归
         tmp.children = filterMutableRoutes(tmp.children, role)
       }
       res.push(tmp)

@@ -15,32 +15,69 @@ import {
 
 const { $req } = Vue.prototype
 
+/**
+ * @typedef Route
+ * @property name        {String}    route name
+ * @property path        {String}    route path, required
+ * @property meta        {Object}
+ * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
+ *                                   every role can visit
+ * @property meta.title  {String}    a string for title, default empty string, will
+ *                                   be dealed with i18n, should be set personally
+ *                                   if it will be shown in the drawer
+ * @property meta.hidden {Boolean}   hide in the drawer or not, default false
+ * @property meta.icon   {String}    a string for icon name, default empty string,
+ *                                   should be set personally if it will be shown
+ *                                   in the drawer
+ * @property children    {Route[]}
+ *
+ * @typedef Result
+ * @property suc {Boolean}
+ * @property msg {String}
+ */
+
 const user = {
   namespaced: true,
   state: {
-    // user id
-    // 用户 id
+    /**
+     * @description user id
+     * @type {Number}
+     */
     id: -1,
-    // user name
-    // 用户名称
+    /**
+     * @description user name
+     * @type {String}
+     */
     username: '',
-    // user nickname
-    // 用户昵称
+    /**
+     * @description user nickname
+     * @type {String}
+     */
     nickname: '',
-    // user role
-    // 用户角色
+    /**
+     * @description user role
+     * @type {Number}
+     */
     role: -1,
-    // language
-    // 语言
+    /**
+     * @description user language
+     * @type {String}
+     */
     language: getLanguage(),
-    // theme
-    // 主题
+    /**
+     * @description user theme
+     * @type {String}
+     */
     theme: getTheme(),
-    // routes needed to add
-    // 需要添加的路由项
+    /**
+     * @description routes need to add
+     * @type {Object[]}
+     */
     routesNeedAdd: [],
-    // all routes for this user
-    // 对应该用户的所有路由
+    /**
+     * @description all routes for this user
+     * @type {Route[]}
+     */
     routes: []
   },
   getters: {
@@ -54,8 +91,12 @@ const user = {
     routes: state => state.routes
   },
   mutations: {
-    // generate routes
-    // 生成路由表
+    /**
+     * @description generate routes
+     * @param {Object} state
+     * @param {Object} annoymous
+     * @param {Number} annoymous.role
+     */
     generateRoutesSync (state, { role }) {
       let routesNeedAdd
       if (role === 0) {
@@ -68,30 +109,47 @@ const user = {
       state.routesNeedAdd = routesNeedAdd
       state.routes = immutableRoutes.concat(routesNeedAdd)
     },
-    // reset routes
-    // 重设路由表
+    /**
+     * @description reset routes
+     * @param {Object} state
+     */
     resetRoutesSync (state) {
       state.routesNeedAdd = []
       state.routes = []
       resetRouter()
     },
-    // set info
-    // 设置相关信息
+    /**
+     * @description set related info
+     * @param {Object} state
+     * @param {Object} annoymous
+     * @param {Number} annoymous.id
+     * @param {String} annoymous.username
+     * @param {String} annoymous.nickname
+     * @param {Number} annoymous.role
+     */
     setInfoSync (state, { id, username, nickname, role }) {
       state.id = id
       state.username = username
       state.nickname = nickname
       state.role = role
     },
-    // set language
-    // 设置语言
+    /**
+     * @description set language
+     * @param {Object} state
+     * @param {Object} annoymous
+     * @param {String} annoymous.language
+     */
     setLanguage (state, { language }) {
       state.language = language
       i18n.locale = language
       setLanguage({ language })
     },
-    // set theme
-    // 设置主题
+    /**
+     * @description set theme
+     * @param {Object} state
+     * @param {Object} annoymous
+     * @param {String} annoymous.theme
+     */
     setTheme (state, { theme }) {
       state.theme = theme
       vuetify.framework.theme.dark = theme === 'dark'
@@ -99,17 +157,24 @@ const user = {
     }
   },
   actions: {
-    // log in
-    // 登录
-    loginAsync ({ commit, state }, { username, password }) {
+    /**
+     * @description login
+     * @param {Object}   context
+     * @param {Object}   context.state
+     * @param {Function} context.commit
+     * @param {Object}   annoymous
+     * @param {String}   annoymous.username
+     * @param {String}   annoymous.password
+     * @return {Promise.<Result>}
+     */
+    loginAsync ({ state, commit }, { username, password }) {
       return $req.post('/auth/login', {
         username,
         password
       }).then((res) => {
-        const { success } = res
-        if (success) {
+        const { suc } = res
+        if (suc) {
           // login successfully, save token and related info
-          // 登录成功，保存 token 和相关信息
           const { data: { token, id, username, nickname, role } } = res
           setToken({ token })
           commit('setInfoSync', { id, username, nickname, role })
@@ -119,28 +184,36 @@ const user = {
         return res
       })
     },
-    // log out
-    // 退出登录
+    /**
+     * @description logout
+     * @param {Object}   context
+     * @param {Function} context.commit
+     * @return {Promise.<Result>}
+     */
     logoutAsync ({ commit }) {
       return $req.post('/auth/logout')
         .then((res) => {
-          const { success } = res
-          if (success) {
+          const { suc } = res
+          if (suc) {
             removeToken()
             commit('resetRoutesSync')
           }
           return res
         })
     },
-    // renew token
-    // 更新 token 状态
+    /**
+     * @description login
+     * @param {Object}   context
+     * @param {Object}   context.state
+     * @param {Function} context.commit
+     * @return {Promise.<Result>}
+     */
     renewTokenAsync ({ commit, state }) {
       return $req.post('/auth/renew')
         .then((res) => {
-          const { success } = res
-          if (success) {
+          const { suc } = res
+          if (suc) {
             // renew successfully, save token and related info
-            // 更新成功，保存 token 和相关信息
             const { data: { token, id, username, nickname, role } } = res
             setToken({ token })
             commit('setInfoSync', { id, username, nickname, role })
@@ -149,8 +222,6 @@ const user = {
           } else {
             // renew failed, remove token
             // no need to reset router
-            // 更新失败，移除 token
-            // 没有必要重置路由
             removeToken()
           }
           return res

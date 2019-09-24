@@ -102,10 +102,8 @@
 
 <script>
 import screenfull from 'screenfull'
-import getBreadcrumbs from '../mixins/breadcrumbs'
 
 export default {
-  mixins: [getBreadcrumbs],
   props: {
     theme: {
       type: String,
@@ -146,7 +144,7 @@ export default {
       return this.isFullscreen ? 'fullscreen_exit' : 'fullscreen'
     },
     breadcrumbs () {
-      const breadcrumbs = this.$route.path.split('/').slice(1)
+      const breadcrumbs = this.$route.path.split('/').filter(item => item.length > 0)
       for (let i = 1, len = breadcrumbs.length; i < len; i += 1) {
         breadcrumbs[i] = `${breadcrumbs[i - 1]}-${breadcrumbs[i]}`
         breadcrumbs[i - 1] = {
@@ -190,7 +188,7 @@ export default {
     handleLogout () {
       this.$store.dispatch('user/logoutAsync')
         .then((res) => {
-          if (res.success) {
+          if (res.suc) {
             this.$router.replace({ name: 'login' })
           } else {
             this.snackbarI18nText = res.msg

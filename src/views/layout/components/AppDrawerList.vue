@@ -4,6 +4,7 @@
 
     <v-list-item
       link
+      class="d-none d-sm-none d-md-none d-lg-flex"
       @click="handleToggleExpandDrawer"
     >
       <v-list-item-icon>
@@ -38,11 +39,6 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      item: null
-    }
-  },
   computed: {
     miniIcon () {
       return this.drawerMini ? 'chevron_right' : 'chevron_left'
@@ -51,11 +47,6 @@ export default {
       return this.$store.getters['user/routes'].filter((route) => {
         return route.children && (!route.meta || (route.meta && !route.meta.hidden))
       })
-    }
-  },
-  watch: {
-    item (newVal, oldVal) {
-      console.log('newVal', newVal)
     }
   }
 }

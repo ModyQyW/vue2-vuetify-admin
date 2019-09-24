@@ -49,8 +49,9 @@ module.exports = {
         axios: 'axios',
         moment: 'moment'
       }
-      // gzip
+      // add plugins
       config.plugins.push(
+        // gzip
         new CompressionWebpackPlugin({
           test: new RegExp(`\\.(${prodGzipExt.join('|')})$`),
           threshold: 0
