@@ -127,7 +127,9 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 TODO:
 
 - Full documents about how to modify
+- Editor
 - Clipboard
+- Todo List
 - Excel
   - Excel upload
   - Excel preview

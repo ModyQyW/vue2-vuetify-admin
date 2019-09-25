@@ -1,7 +1,6 @@
 const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
-const resolve = dir => path.join(__dirname, dir)
 const isProd = process.env.NODE_ENV === 'production'
 const prodGzipExt = ['html', 'js', 'css', 'json', 'ttf', 'eot', 'otf', 'woff', 'woff2', 'svg', 'png',
   'gif', 'jpg', 'jpeg', 'bmp', 'webp', 'webm', 'flv', 'ogg', 'wav', 'mp3', 'mp4']
@@ -63,9 +62,11 @@ module.exports = {
   chainWebpack: (config) => {
     // set alias
     config.resolve.alias
-      .set('@', resolve('src'))
-      .set('@c', resolve('src/components'))
-      .set('@a', resolve('src/assets'))
+      .set('@', path.resolve(__dirname, 'src'))
+      .set('@c', path.resolve(__dirname, 'src', 'components'))
+      .set('@a', path.resolve(__dirname, 'src', 'assets'))
+      .set('@m', path.resolve(__dirname, 'src', 'mixins'))
+      .set('@u', path.resolve(__dirname, 'src', 'utils'))
     // split chunks
     config.when(
       isProd,
@@ -75,15 +76,22 @@ module.exports = {
             chunks: 'all',
             cacheGroups: {
               libs: {
+                chunks: 'initial',
                 name: 'chunk-libs',
-                test: /[\\/]node_modules[\\/]/,
                 priority: 10,
-                chunks: 'initial'
+                test: /[\\/]node_modules[\\/]/
               },
               vuetify: {
                 name: 'chunk-vuetify',
                 priority: 20,
                 test: /[\\/]node_modules[\\/]_?vuetify(.*)/
+              },
+              comp: {
+                minChunks: 3,
+                name: 'chunk-comp',
+                priority: 5,
+                reuseExistingChunk: true,
+                test: path.resolve('src', 'components')
               }
             }
           })

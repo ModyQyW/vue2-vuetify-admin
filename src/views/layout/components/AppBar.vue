@@ -170,7 +170,6 @@ export default {
     screenfull.on('change', () => {
       this.isFullscreen = screenfull.isFullscreen
     })
-    console.log('this.breadcrumbs', this.breadcrumbs)
   },
   methods: {
     handleChangeLanguage (language) {

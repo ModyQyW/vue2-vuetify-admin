@@ -25,7 +25,9 @@
     "notFound": "Not Found",
     "internalServerError": "Internal Server Error",
     "noResponse": "No Response",
-    "requestError": "Request Error"
+    "requestError": "Request Error",
+    "editorHeightRequired": "Editor height is required",
+    "editorHeightInvalid": "Editor height is invalid"
   },
   "drawer": {
     "narrow": "narrow navigation",

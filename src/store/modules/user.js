@@ -19,6 +19,7 @@ const { $req } = Vue.prototype
  * @typedef Route
  * @property name        {String}    route name
  * @property path        {String}    route path, required
+ * @property component   {Function}  route component, required
  * @property meta        {Object}
  * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
  *                                   every role can visit
@@ -71,7 +72,7 @@ const user = {
     theme: getTheme(),
     /**
      * @description routes need to add
-     * @type {Object[]}
+     * @type {Route[]}
      */
     routesNeedAdd: [],
     /**

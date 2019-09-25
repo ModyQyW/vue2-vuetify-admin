@@ -57,6 +57,7 @@ const removeToken = () => window.localStorage.removeItem(tokenKey)
  * @typedef Route
  * @property name        {String}    route name
  * @property path        {String}    route path, required
+ * @property component   {String}    route component, required
  * @property meta        {Object}
  * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
  *                                   every role can visit
