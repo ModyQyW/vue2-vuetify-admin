@@ -1,5 +1,8 @@
 <template>
   <v-container>
+    <v-alert type="warning" dense>
+      You had better check <a href="https://github.com/eligrey/FileSaver.js">file-saver</a> and <a href="https://stuk.github.io/jszip/">jszip</a> for more usage.
+    </v-alert>
     <v-row>
       <v-col sm="12" class="d-flex justify-center">
         <img
