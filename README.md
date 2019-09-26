@@ -116,6 +116,7 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 - Screenfull
 - Exception pages
 - Charts
+- Draggable todo list
 - Editor
   - Markdown editor
   - Rich text editor
@@ -126,7 +127,6 @@ TODO:
 
 - Full documents about how to modify
 - Clipboard
-- Todo List
 - Excel
   - Excel upload
   - Excel preview

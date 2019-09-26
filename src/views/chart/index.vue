@@ -1,23 +1,23 @@
 <template>
-  <v-row>
-    <v-col sm="12">
-      <v-alert type="warning" dense>
-        You had better check <a href="https://github.com/ecomfe/vue-echarts">vue-echarts</a> and <a href="https://echarts.apache.org">echarts</a> for more usage.
-      </v-alert>
-    </v-col>
-    <v-col sm="6" xl="4">
-      <v-echart :options="polarOptions" autoresize />
-    </v-col>
-    <v-col sm="6" xl="4">
-      <v-echart :options="barOptions" autoresize />
-    </v-col>
-    <v-col sm="6" xl="4">
-      <v-echart :options="pieOptions" autoresize />
-    </v-col>
-    <v-col sm="6" xl="4">
-      <v-echart :options="scatterOptions" autoresize />
-    </v-col>
-  </v-row>
+  <v-container>
+    <v-alert type="warning" dense>
+      You had better check <a href="https://github.com/ecomfe/vue-echarts">vue-echarts</a> and <a href="https://echarts.apache.org">echarts</a> for more usage.
+    </v-alert>
+    <v-row>
+      <v-col sm="6" xl="4">
+        <v-echart :options="polarOptions" autoresize />
+      </v-col>
+      <v-col sm="6" xl="4">
+        <v-echart :options="barOptions" autoresize />
+      </v-col>
+      <v-col sm="6" xl="4">
+        <v-echart :options="pieOptions" autoresize />
+      </v-col>
+      <v-col sm="6" xl="4">
+        <v-echart :options="scatterOptions" autoresize />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
