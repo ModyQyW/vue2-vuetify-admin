@@ -1,5 +1,8 @@
 <template>
   <v-container>
+    <v-alert type="warning" dense>
+      You had better check <a href="https://github.com/nhn/toast-ui.vue-editor">toast-ui.vue-editor</a> and <a href="https://github.com/nhn/tui.editor">tui.editor</a> for more usage.
+    </v-alert>
     <v-row justify="space-around">
       <v-switch v-model="isVertical" label="isVertical"></v-switch>
       <v-switch v-model="isMarkdown" label="isMarkdown"></v-switch>

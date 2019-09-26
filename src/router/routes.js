@@ -78,8 +78,8 @@ export const immutableRoutes = [
     ]
   },
   {
-    path: '/editor',
     name: 'editor',
+    path: '/editor',
     redirect: { name: 'editor-markdown' },
     component: Layout,
     children: [
@@ -122,31 +122,18 @@ export const immutableRoutes = [
   },
   {
     path: '/file',
-    name: 'file',
-    redirect: { name: 'file-save' },
     component: Layout,
     children: [
       {
-        name: 'file-save',
-        path: 'save',
-        component: () => import('@/views/file/file-save.vue'),
+        name: 'file',
+        path: '',
+        component: () => import('@/views/file'),
         meta: {
-          title: 'drawer.file-save'
-        }
-      },
-      {
-        name: 'file-zip',
-        path: 'zip',
-        component: () => import('@/views/file/file-zip.vue'),
-        meta: {
-          title: 'drawer.file-zip'
+          title: 'drawer.file',
+          icon: 'folder'
         }
       }
-    ],
-    meta: {
-      title: 'drawer.file',
-      icon: 'folder'
-    }
+    ]
   },
   {
     path: '/nested',

@@ -58,6 +58,9 @@ export default {
       case '502':
         this.text = '502 Bad Gateway'
         break
+      case '520':
+        this.text = 'Surprise! ❤️'
+        break
       default:
         this.text = 'Unknown Error'
         break

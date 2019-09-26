@@ -1,5 +1,10 @@
 <template>
   <v-row>
+    <v-col sm="12">
+      <v-alert type="warning" dense>
+        You had better check <a href="https://github.com/ecomfe/vue-echarts">vue-echarts</a> and <a href="https://echarts.apache.org">echarts</a> for more usage.
+      </v-alert>
+    </v-col>
     <v-col sm="6" xl="4">
       <v-echart :options="polarOptions" autoresize />
     </v-col>
@@ -48,7 +53,7 @@ export default {
     return {
       polarOptions: {
         title: {
-          text: '极坐标双数值轴'
+          text: 'Two Value-Axes in Polar'
         },
         legend: {
           data: ['line']
@@ -96,18 +101,18 @@ export default {
           }
         },
         legend: {
-          data: ['蒸发量', '降水量', '平均温度']
+          data: ['Evaporation', 'Precipitation', 'Average Temperature']
         },
         xAxis: [{
           type: 'category',
-          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+          data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
           axisPointer: {
             type: 'shadow'
           }
         }],
         yAxis: [{
           type: 'value',
-          name: '水量',
+          name: 'Precipitation',
           min: 0,
           max: 250,
           interval: 50,
@@ -117,7 +122,7 @@ export default {
         },
         {
           type: 'value',
-          name: '温度',
+          name: 'Temperature',
           min: 0,
           max: 25,
           interval: 5,
@@ -126,17 +131,17 @@ export default {
           }
         }],
         series: [{
-          name: '蒸发量',
+          name: 'Evaporation',
           type: 'bar',
           data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
         },
         {
-          name: '降水量',
+          name: 'Precipitation',
           type: 'bar',
           data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
         },
         {
-          name: '平均温度',
+          name: 'Average Temperature',
           type: 'line',
           yAxisIndex: 1,
           data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
@@ -144,8 +149,8 @@ export default {
       },
       pieOptions: {
         title: {
-          text: '南丁格尔玫瑰图',
-          subtext: '纯属虚构',
+          text: 'Nightingale\'s Rose Diagram',
+          subtext: 'fictional',
           x: 'center'
         },
         tooltip: {
@@ -172,7 +177,7 @@ export default {
         },
         calculable: true,
         series: [{
-          name: '半径模式',
+          name: 'Radius Mode',
           type: 'pie',
           radius: [20, 110],
           center: ['25%', '50%'],
@@ -205,7 +210,7 @@ export default {
           ]
         },
         {
-          name: '面积模式',
+          name: 'Area Mode',
           type: 'pie',
           radius: [30, 110],
           center: ['75%', '50%'],
@@ -224,7 +229,7 @@ export default {
       },
       scatterOptions: {
         title: {
-          text: '1990 与 2015 年各国家人均寿命与 GDP'
+          text: '1990 and 2015 per capita life expectancy and GDP'
         },
         legend: {
           right: 10,

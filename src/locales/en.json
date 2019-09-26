@@ -5,6 +5,7 @@
   },
   "btn": {
     "confirm": "Confirm",
+    "save": "Save",
     "reset": "Reset",
     "cancel": "Cancel",
     "login": "Log In",

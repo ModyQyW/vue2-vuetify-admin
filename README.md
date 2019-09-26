@@ -120,9 +120,7 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
   - Markdown editor
   - Rich text editor
 - Todo list
-- File
-  - File save
-  - File zip
+- File: save & zip
 
 TODO:
 

@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-alert type="warning" dense>
-      You better check <a href="https://github.com/surmon-china/vue-quill-editor">vue-quill-editor docs</a> and <a href="https://quilljs.com/docs/quickstart/">quill-editor docs</a> for more usage.
+      You had better check <a href="https://github.com/surmon-china/vue-quill-editor">vue-quill-editor docs</a> and <a href="https://quilljs.com/docs/quickstart/">quill-editor docs</a> for more usage.
     </v-alert>
     <rich-text-editor
       class="rich-text-editor"
