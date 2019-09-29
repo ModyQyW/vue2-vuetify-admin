@@ -72,7 +72,7 @@ No tests now. Pull requests are welcome.
 ## Deployment
 
 - Open [vue.config.js](./vue.config.js) and set L14
-- Open [axios.js](./src/plugins/axios.js) and set L9
+- Open [request.js](./src/utils/request.js) and set L6
 - Uncomment [public/index.html](./public/index.html) L33-37 (You should comment L33-37 when developing)
 - Run `yarn build`(for legacy build) or `yarn build --modern`(for modern build) and get `dist` folder
 - Upload `dist` folder content to your server
@@ -112,7 +112,7 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
   - Page permission
 - I18n: English & Simplified Chinese
 - Two themes: light and dark
-- Four-level routing, corresponding to three-level drawer navigation
+- Three-level routing, corresponding to three-level drawer navigation
 - Screenfull
 - Exception pages
 - Charts
@@ -120,7 +120,6 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 - Editor
   - Markdown editor
   - Rich text editor
-- Todo list
 - File: save & zip
 
 TODO:

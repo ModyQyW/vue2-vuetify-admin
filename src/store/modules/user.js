@@ -1,8 +1,8 @@
-import Vue from 'vue'
 import router, { resetRouter } from '@/router'
 import { immutableRoutes, mutableRoutes } from '@/router/routes'
-import i18n from '@/i18n'
+import i18n from '@/plugins/i18n'
 import vuetify from '@/plugins/vuetify'
+import $req from '@/utils/request'
 import {
   setToken,
   removeToken,
@@ -12,8 +12,6 @@ import {
   setTheme,
   filterMutableRoutes
 } from '@/utils/user'
-
-const { $req } = Vue.prototype
 
 /**
  * @typedef Route
@@ -101,7 +99,7 @@ const user = {
     generateRoutesSync (state, { role }) {
       let routesNeedAdd
       if (role === 0) {
-        routesNeedAdd = mutableRoutes || []
+        routesNeedAdd = mutableRoutes
       } else {
         routesNeedAdd = filterMutableRoutes(mutableRoutes, role)
       }

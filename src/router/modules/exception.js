@@ -1,7 +1,7 @@
 // the layout for most pages
 import Layout from '@/views/layout'
 
-const exceptionRoutes = [
+export default [
   {
     path: '/401',
     component: Layout,
@@ -87,5 +87,3 @@ const exceptionRoutes = [
     }
   }
 ]
-
-export default exceptionRoutes

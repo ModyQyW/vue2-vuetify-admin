@@ -72,7 +72,7 @@ yarn start
 ## 部署
 
 - 打开 [vue.config.js](./vue.config.js) 并设置第 14 行
-- 打开 [axios.js](./src/plugins/axios.js) 并设置第 9 行
+- 打开 [request.js](./src/utils/request.js) 并设置第 6 行
 - 取消注释 [public/index.html](./public/index.html) 第 33-37 行（开发时应当注释掉）
 - 运行 `yarn build`（旧版模式构建）或 `yarn build --modern`（现代模式构建）并得到 `dist` 文件夹
 - 上传 `dist` 文件夹内容到你的服务器上
@@ -112,7 +112,7 @@ yarn start
   - 页面级权限
 - I18n：英语 & 简体中文
 - 两个主题：浅色和深色
-- 四层级路由，对应三层级抽屉导航
+- 三层级路由，对应三层级抽屉导航
 - 全屏
 - 异常页
 - 图表
@@ -120,7 +120,6 @@ yarn start
 - 编辑器
   - Markdown 编辑器
   - 富文本编辑器
-- 待办
 - 文件：保存与压缩
 
 TODO:

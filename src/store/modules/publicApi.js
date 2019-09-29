@@ -1,6 +1,4 @@
-import Vue from 'vue'
-
-const { $req } = Vue.prototype
+import $req from '@/utils/request'
 
 const publicApi = {
   namespaced: true,

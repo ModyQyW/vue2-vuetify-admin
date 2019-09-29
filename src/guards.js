@@ -1,7 +1,7 @@
 import NProgress from 'nprogress'
 import router from '@/router'
 import store from '@/store'
-import './plugins/nprogress.css'
+import '@/utils/nprogress.css'
 
 import { authenticationRouteSet } from '@/router/routes'
 import { getToken } from '@/utils/user'
@@ -30,7 +30,7 @@ router.beforeEach(async (to, from, next) => {
         // token is still available => renew token
         // 试图更新 token
         const renewTokenRes = await store.dispatch('user/renewTokenAsync')
-        if (renewTokenRes.success) {
+        if (renewTokenRes.suc) {
           // renew successfully and get role => generate mutable routes for this role, add those routes to router, and trigger the guard
           // 更新成功，同时获取到 role => 生成动态路由表，添加到路由上，重新触发导航守卫
           next({

@@ -56,19 +56,19 @@ const removeToken = () => window.localStorage.removeItem(tokenKey)
 /**
  * @typedef Route
  * @property name        {String}    route name
- * @property path        {String}    route path, required
- * @property component   {String}    route component, required
+ * @property path        {String}    route path
+ * @property component   {(Function|Component)}
+ *                                   route component showing the page
  * @property meta        {Object}
- * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
+ * @property meta.roles  {Number[]}  an array of roles, default [], meaning that
  *                                   every role can visit
- * @property meta.title  {String}    a string for title, default empty string, will
- *                                   be dealed with i18n, should be set personally
- *                                   if it will be shown in the drawer
- * @property meta.hidden {Boolean}   hide in the drawer or not, default false
- * @property meta.icon   {String}    a string for icon name, default empty string,
- *                                   should be set personally if it will be shown
- *                                   in the drawer
- * @property children    {Route[]}
+ * @property meta.title  {String}    a string for title, will be dealed with i18n,
+ *                                   default empty string
+ * @property meta.hidden {Boolean}   hide in the drawer navigation or not, default
+ *                                   false
+ * @property meta.icon   {String}    a string of depth 1 route icon name, default
+ *                                   empty string
+ * @property children    {Route[]}   an array of routes
  */
 
 /**

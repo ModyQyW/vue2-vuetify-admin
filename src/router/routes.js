@@ -1,11 +1,11 @@
-// the layout for most pages
-import Layout from '@/views/layout'
-
-// module authentication
 import authenticationRoutes from './modules/authentication'
-
-// module exception
+import chartRoutes from './modules/chart'
+import dashboardRoutes from './modules/dashboard'
+import editorRoutes from './modules/editor'
+import fileRoutes from './modules/file'
+import nestedRoutes from './modules/nested'
 import exceptionRoutes from './modules/exception'
+import todoRoutes from './modules/todo'
 
 // a set for authentication routes using for judgement
 export const authenticationRouteSet = new Set(authenticationRoutes.map(route => route.path))
@@ -15,30 +15,28 @@ export const exceptionRouteSet = new Set(exceptionRoutes.map(route => route.path
 
 /**
  * route structure
- * max depth: 4
- * In all cases I met, 4 is fine
- * 1st: Layout component or self layout page (for example, login)
- * 2nd: v-list-item or v-list-group
- * 3rd: v-list-item or v-list-group
- * 4th: v-list-item
- * If you have to use 5 or more, rethink: is it neccessary?
+ * suggested max depth: 3
+ * depth 1: shown as v-list-item or v-list-group in the drawer navigation
+ * depth 2: shown as v-list-item or v-list-group in the drawer navigation
+ * depth 3: shown as v-list-item
  *
  * @typedef Route
  * @property name        {String}    route name
- * @property path        {String}    route path, required
- * @property component   {String}    route component, required
+ * @property path        {String}    route path
+ * @property component   {(Function|Component)}
+ *                                   route component showing the page
  * @property meta        {Object}
- * @property meta.roles  {Number[]}  an array for roles, default [], meaning that
+ * @property meta.roles  {Number[]}  an array of roles, default [], meaning that
  *                                   every role can visit
- * @property meta.title  {String}    a string for title, default empty string, will
- *                                   be dealed with i18n, should be set personally
- *                                   if it will be shown in the drawer
- * @property meta.hidden {Boolean}   hide in the drawer or not, default false
- * @property meta.icon   {String}    a string for icon name, default empty string,
- *                                   should be set personally if it will be shown
- *                                   in the drawer
- * @property children    {Route[]}
+ * @property meta.title  {String}    a string for title, will be dealed with i18n,
+ *                                   default empty string
+ * @property meta.hidden {Boolean}   hide in the drawer navigation or not, default
+ *                                   false
+ * @property meta.icon   {String}    a string of depth 1 route icon name, default
+ *                                   empty string
+ * @property children    {Route[]}   an array of routes
  *
+ * you can get more information in docs/usage/README.md
  */
 
 /**
@@ -47,160 +45,12 @@ export const exceptionRouteSet = new Set(exceptionRoutes.map(route => route.path
 export const immutableRoutes = [
   ...authenticationRoutes,
   ...exceptionRoutes,
-  {
-    path: '/dashboard',
-    component: Layout,
-    children: [
-      {
-        name: 'dashboard',
-        path: '',
-        component: () => import('@/views/dashboard'),
-        meta: {
-          title: 'drawer.dashboard',
-          icon: 'dashboard'
-        }
-      }
-    ]
-  },
-  {
-    path: '/chart',
-    component: Layout,
-    children: [
-      {
-        name: 'chart',
-        path: '',
-        component: () => import('@/views/chart'),
-        meta: {
-          title: 'drawer.chart',
-          icon: 'multiline_chart'
-        }
-      }
-    ]
-  },
-  {
-    name: 'editor',
-    path: '/editor',
-    redirect: { name: 'editor-markdown' },
-    component: Layout,
-    children: [
-      {
-        name: 'editor-markdown',
-        path: 'markdown',
-        component: () => import('@/views/editor/markdown-editor'),
-        meta: {
-          title: 'drawer.editor-markdown'
-        }
-      },
-      {
-        name: 'editor-rich-text',
-        path: 'rich-text',
-        component: () => import('@/views/editor/rich-text-editor'),
-        meta: {
-          title: 'drawer.editor-rich-text'
-        }
-      }
-    ],
-    meta: {
-      title: 'drawer.editor',
-      icon: 'edit'
-    }
-  },
-  {
-    path: '/todo',
-    component: Layout,
-    children: [
-      {
-        name: 'todo',
-        path: '',
-        component: () => import('@/views/todo'),
-        meta: {
-          title: 'drawer.todo',
-          icon: 'list'
-        }
-      }
-    ]
-  },
-  {
-    path: '/file',
-    component: Layout,
-    children: [
-      {
-        name: 'file',
-        path: '',
-        component: () => import('@/views/file'),
-        meta: {
-          title: 'drawer.file',
-          icon: 'folder'
-        }
-      }
-    ]
-  },
-  {
-    path: '/nested',
-    name: 'nested',
-    redirect: { name: 'nested-level1-inner1' },
-    component: Layout,
-    children: [
-      {
-        path: 'level1',
-        name: 'nested-level1',
-        redirect: { name: 'nested-level1-inner1' },
-        component: () => import('@/views/nested/level1'),
-        children: [
-          {
-            path: 'inner1',
-            name: 'nested-level1-inner1',
-            component: () => import('@/views/nested/level1/inner1'),
-            meta: {
-              title: 'drawer.nested-level1-inner1'
-            }
-          },
-          {
-            path: 'inner2',
-            name: 'nested-level1-inner2',
-            component: () => import('@/views/nested/level1/inner2'),
-            meta: {
-              title: 'drawer.nested-level1-inner2'
-            }
-          }
-        ],
-        meta: {
-          title: 'drawer.nested-level1'
-        }
-      },
-      {
-        path: 'level2',
-        name: 'nested-level2',
-        redirect: { name: 'nested-level2-inner1' },
-        component: () => import('@/views/nested/level2'),
-        children: [
-          {
-            path: 'inner1',
-            name: 'nested-level2-inner1',
-            component: () => import('@/views/nested/level2/inner1'),
-            meta: {
-              title: 'drawer.nested-level2-inner1'
-            }
-          },
-          {
-            path: 'inner2',
-            name: 'nested-level2-inner2',
-            component: () => import('@/views/nested/level2/inner2'),
-            meta: {
-              title: 'drawer.nested-level2-inner2'
-            }
-          }
-        ],
-        meta: {
-          title: 'drawer.nested-level2'
-        }
-      }
-    ],
-    meta: {
-      title: 'drawer.nested',
-      icon: 'toc'
-    }
-  }
+  ...dashboardRoutes,
+  ...chartRoutes,
+  ...editorRoutes,
+  ...todoRoutes,
+  ...fileRoutes,
+  ...nestedRoutes
 ]
 
 /**

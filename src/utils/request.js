@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import axios from 'axios'
 
 // dev environment api url
@@ -113,11 +112,9 @@ const upload = (url, data) => axios({
   data
 })
 
-// link to prototype
-Vue.prototype.$axios = axios
-
-Vue.prototype.$req = {
+export default {
   get,
   post,
-  upload
+  upload,
+  axios
 }

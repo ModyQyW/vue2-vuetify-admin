@@ -1,4 +1,4 @@
-const authenticationRoutes = [
+export default [
   {
     path: '/',
     redirect: { name: 'login' },
@@ -16,5 +16,3 @@ const authenticationRoutes = [
     }
   }
 ]
-
-export default authenticationRoutes
