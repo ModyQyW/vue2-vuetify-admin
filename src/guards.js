@@ -1,7 +1,7 @@
 import NProgress from 'nprogress'
 import router from '@/router'
 import store from '@/store'
-import '@/utils/nprogress.css'
+import '@/utils/nprogress.scss'
 
 import { authenticationRouteSet } from '@/router/routes'
 import { getToken } from '@/utils/user'

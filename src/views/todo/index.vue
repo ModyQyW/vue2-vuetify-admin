@@ -184,7 +184,7 @@ export default {
 
 <style lang="scss" scoped>
 .white-container {
-  background-color: white;
+  background-color: #FFF;
 }
 
 .transition-group {
@@ -198,7 +198,7 @@ export default {
 
 .ghost {
   background: #C8EBFB;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 .list-group {
@@ -220,7 +220,7 @@ export default {
     padding-left: 4px;
     list-style-type: none;
     cursor: move;
-    border: 1px solid black;
+    border: 1px solid #000;
     border-bottom: 0;
 
     &:first-child {
@@ -229,7 +229,7 @@ export default {
     }
 
     &:last-child {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid #000;
       border-bottom-right-radius: 3px;
       border-bottom-left-radius: 3px;
     }

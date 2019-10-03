@@ -1,5 +1,6 @@
 const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const StylelintWebpackPlugin = require('stylelint-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 const prodGzipExt = ['html', 'js', 'css', 'json', 'ttf', 'eot', 'otf', 'woff', 'woff2', 'svg', 'png',
@@ -27,8 +28,6 @@ module.exports = {
   transpileDependencies: ['vuetify', 'vue-echarts', 'resize-detector'],
 
   pluginOptions: {
-    // stylelint
-    lintStyleOnBuild: true,
     // i18n
     i18n: {
       locale: 'en',
@@ -39,6 +38,13 @@ module.exports = {
   },
 
   configureWebpack: (config) => {
+    config.plugins.push(
+      // stylelint
+      new StylelintWebpackPlugin({
+        files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
+        formatter: require('stylelint-codeframe-formatter')
+      })
+    )
     if (isProd) {
       // externals
       config.externals = {

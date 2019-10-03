@@ -13,17 +13,18 @@ export default {
 </script>
 
 <style lang="scss">
+/* stylelint-disable selector-class-pattern */
 .v-breadcrumbs__item {
-  color: white !important;
+  color: #FFF !important;
 }
 
 .v-breadcrumbs {
   &.theme--light .v-breadcrumbs__item--disabled {
-    color: rgba(0, 0, 0, 0.38) !important;
+    color: rgba(0, 0, 0, .38) !important;
   }
 
   &.theme--dark .v-breadcrumbs__item--disabled {
-    color: rgba(255, 255, 255, 0.5) !important;
+    color: rgba(255, 255, 255, .5) !important;
   }
 }
 </style>
