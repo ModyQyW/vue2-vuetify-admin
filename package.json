@@ -10,6 +10,7 @@
     "build": "vue-cli-service build --report",
     "build:modern": "vue-cli-service build --modern --report",
     "lint": "vue-cli-service lint",
+    "lint:style": "stylelint .",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "test:unit": "vue-cli-service test:unit"
   },
