@@ -10,7 +10,7 @@
 
 ### 准备
 
-- 推荐使用 nvm，长期支持版 lts node，长期支持版 npm 和 yarn。
+- 推荐使用 nvm，长期支持版 lts node，长期支持版 npm 和 yarn
   - 参照以下链接，首先安装 nvm
     - [nvm for Mac/Linux](https://github.com/nvm-sh/nvm)
     - [nvm-windows](https://github.com/coreybutler/nvm-windows)
@@ -83,9 +83,9 @@ yarn start
 ## 主要依赖
 
 - [vue-cli](https://cli.vuejs.org/)：Vue.js 开发的标准工具，用于初始化该项目
-- [vue](http://www.dropwizard.io/1.0.2/docs/)：渐进式 JavaScript 框架
-- [vuex](https://maven.apache.org/)：一个专为 Vue.js 应用程序开发的状态管理模式
-- [vue-router](https://rometools.github.io/rome/)：Vue.js 官方的路由管理器
+- [vue](https://cn.vuejs.org/)：渐进式 JavaScript 框架
+- [vuex](https://vuex.vuejs.org/zh/)：一个专为 Vue.js 应用程序开发的状态管理模式
+- [vue-router](https://router.vuejs.org/zh/)：Vue.js 官方的路由管理器
 - [vuetify](https://vuetifyjs.com/en/)：Vue.js 的 material design 组件框架
 - [vue-i18n](https://kazupon.github.io/vue-i18n/)：Vue.js 的国际化插件
 - [axios](https://github.com/axios/axios)：基于 Promise 的 HTTP 客户端，用于浏览器和 node.js
@@ -100,7 +100,7 @@ yarn start
 - [file-saver](https://github.com/eligrey/FileSaver.js/)：一个 HTML5 `saveAs()` FileSaver 实现
 - [vuedraggable](https://github.com/SortableJS/Vue.Draggable)：基于 [Sortable.js](https://github.com/SortableJS/Sortable) 的 Vue 拖拽组件
 - [xlsx](https://www.npmjs.com/package/xlsx)：各种电子表格格式的分析器和编写器
-- [xss](https://jsxss.com/en/index.html)：使用白名单指定的配置清理不受信任的 HTML（以防止 XSS）
+- [xss](https://jsxss.com/zh/index.html)：使用白名单指定的配置清理不受信任的 HTML（以防止 XSS）
 - [eslint](https://eslint.org)：一个为 JavaScript 提供了可插入的规范代码能力的开源项目，这个项目里使用了 [standard](https://standardjs.com/readme-zhcn.html)
 - [sass](https://github.com/sass/dart-sass)：[Sass](https://sass-lang.com/) 的纯 JavaScript 实现
 - [stylelint](https://stylelint.io/)：一个强大的，现代的规范工具，可以帮助避免错误并在样式中强制执行规范
@@ -124,7 +124,6 @@ yarn start
 
 TODO:
 
-- 完整的文档，教导如何修改
 - 剪贴板
 - Excel
   - Excel 上传

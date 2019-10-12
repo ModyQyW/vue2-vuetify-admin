@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Using nvm, node lts, npm lts and yarn is recommended.
+- Using nvm, node lts, npm lts and yarn is recommended
   - Follow the links below and install nvm first
     - [nvm for Mac/Linux](https://github.com/nvm-sh/nvm)
     - [nvm-windows](https://github.com/coreybutler/nvm-windows)
@@ -31,9 +31,9 @@ These instructions will get you a copy of the project up and running on your loc
     ```
 
   - If you are Chinese, maybe you should set mirrors
-- Git is also required.
+- Git is also required
   - [git for Windows/Linux](https://git-scm.com/downloads)
-  - Using [Homebrew](https://brew.sh/) to install git on Mac is recommended.
+  - Using [Homebrew](https://brew.sh/) to install git on Mac is recommended
 
 ### Installing
 
@@ -83,9 +83,9 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 ## Built With
 
 - [vue-cli](https://cli.vuejs.org/) - Standard tooling for Vue.js development, using to initial this project
-- [vue](http://www.dropwizard.io/1.0.2/docs/) - A progressive JavaScript framework
-- [vuex](https://maven.apache.org/) - A state management pattern + library for Vue.js applications
-- [vue-router](https://rometools.github.io/rome/) - The official router for Vue.js
+- [vue](https://vuejs.org) - A progressive JavaScript framework
+- [vuex](https://vuex.vuejs.org/) - A state management pattern + library for Vue.js applications
+- [vue-router](https://router.vuejs.org/) - The official router for Vue.js
 - [vuetify](https://vuetifyjs.com/en/) - A material design component framework for Vue.js
 - [vue-i18n](https://kazupon.github.io/vue-i18n/) - Internationalization plugin for Vue.js
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
