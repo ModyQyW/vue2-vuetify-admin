@@ -89,18 +89,19 @@ axios.interceptors.response.use(
 )
 
 const get = (url, params) => axios({
-  method: 'get',
   url,
+  method: 'get',
   params
 })
 
 const post = (url, data) => axios({
-  method: 'post',
   url,
+  method: 'post',
   data
 })
 
 const upload = (url, data) => axios({
+  url,
   method: 'post',
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
@@ -108,7 +109,6 @@ const upload = (url, data) => axios({
     Accept: 'application/json',
     'x-version': version
   },
-  url,
   data
 })
 
