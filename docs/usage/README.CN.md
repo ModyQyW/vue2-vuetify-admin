@@ -14,9 +14,10 @@
 - Beautify
 - Bootstrap 4, Font awesome 4, Font Awesome 5 & Pro snippets
 - Bracket Pair Colorizer 2
-- cml
 - Code Runner
 - Codelf
+- CodeSandbox
+- Comment Translate
 - CSS Peek
 - Document This
 - ESLint
@@ -30,22 +31,23 @@
 - IntelliSense for CSS class names in HTML
 - JavaScript (ES6) code snippets
 - jQuery Code Snippets
-- language-stylus
 - LeetCode
 - Live Server
 - Lorem ipsum
+- Markdown All in One
 - Markdown Preview Enhanced
 - markdownlint
 - minapp
 - Path Autocomplete
 - Path Intellisense
+- Prettier
 - Project Manager
 - React Native Tools
 - React-Native/React/Redux snippets for es6/es7
 - Sorting HTML and Jade attributes
-- stylelint
 - TODO Highlight
 - TSLint
+- TypeScript Hero
 - TypeScript Importer
 - Vetur
 - vscode-element-helper
@@ -136,6 +138,14 @@
       "autoFix": true,
     },
     {
+      "language": "typescript",
+      "autoFix": true,
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true,
+    },
+    {
       "language": "html",
       "autoFix": true
     },
@@ -178,9 +188,8 @@
   "todohighlight.isEnable": true,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatter.js": "vscode-typescript",
-  "window.zoomLevel": -0.25,
+  "window.zoomLevel": -0.5,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Default Light+",
   "workbench.startupEditor": "newUntitledFile",
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
@@ -190,7 +199,11 @@
   },
   "[json]": {
     "editor.defaultFormatter": "HookyQR.beautify"
-  }
+  },
+  "workbench.colorTheme": "Default Light+",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "commentTranslate.targetLanguage": "zh-CN",
+  "commentTranslate.multiLineMerge": true
 }
 ```
 
@@ -202,7 +215,7 @@
 
 ## 项目结构
 
-```sh
+```md
 ├── docs                       文档
 │   ├── usage                  使用文档
 │   |   ├── README.CN.md
@@ -212,6 +225,7 @@
 ├── src
 │   ├── assets                 资产文件
 │   ├── components             全局组件
+│   ├── layout                 全局布局
 │   ├── locales                国际化 json 文件
 │   ├── plugins                挂载到 vue 实例上的插件
 │   │   ├── i18n.js            国际化插件
@@ -231,22 +245,16 @@
 │   ├── App.vue                页面入口，全局样式修改，个人习惯初始化
 │   ├── guards.js              路由导航守卫
 │   ├── main.js                挂载
-├── tests                      测试（空）
-├── .browserslistrc            支持的浏览器，会被 babel 读取按需添加 polyfill
 ├── .editorconfig              编辑器设置
 ├── .env                       指定所有环境的环境变量
-├── .eslintrc.js               eslint 配置
-├── .gitattributes
-├── .gitignore
+├── .gitignore                 指定 git 忽略
+├── .stylelintignore           指定 stylelint 忽略
 ├── babel.config.js            babel 配置
 ├── CONTRIBUTING.md
-├── jest.config.js             jest 配置
 ├── LICENSE
 ├── package.json               依赖、命令声明
-├── postcss.config.js          postcss 配置
 ├── README.CN.md
 ├── README.md
-├── stylelint.config.js        stylelint 配置
 ├── vue.config.js              vue-cli 配置
 └── yarn.lock                  锁定依赖版本
 ```
@@ -255,7 +263,7 @@
 
 全局组件应当是数个页面或组件都需要的组件，一般情况下，使用 vuetify 和社区内的组件就足够了，但仍不能排除需要自定义组件的情况。
 
-自定义组件假如只在一个页面内使用到，应当在对应页面的文件夹内新建 components 文件夹，并放入自定义组件，参考`@/views/layout`；假如在多个页面内使用到，则应放到`@/components`内。
+自定义组件假如只在一个页面内使用到，应当在对应页面的文件夹内新建 components 文件夹，并放入自定义组件，参考`@/layout`；假如在多个页面内使用到，则应放到`@/components`内。
 
 ## 国际化
 
@@ -304,15 +312,15 @@ Cookie 有着诸多限制和问题，不建议使用。
 
 全局前置守卫：
 
-01. 启动 nprogress
-02. 检查是否有 token，有 token 跳转到步骤 03，否则跳转到步骤 10
-03. 检查是否前往登录页，是的话跳转到步骤 04，否则跳转到步骤 05
-04. 跳转到仪表板页，流程结束
-05. 检查状态树是否已经储存非 -1 的角色值，是的话跳转到步骤 06，否则跳转到步骤 07
-06. 允许跳转，流程结束
-07. 发送请求更新 token，更新成功则跳转到步骤 08，否则跳转到步骤 09，生成路由表具体流程参见[动态路由表的生成与挂载](#动态路由表的生成与挂载)
-08. 重新触发导航守卫，流程结束
-09. 跳转到登录页，记录原本要前往的页面，流程结束
+1.  启动 nprogress
+2.  检查是否有 token，有 token 跳转到步骤 03，否则跳转到步骤 10
+3.  检查是否前往登录页，是的话跳转到步骤 04，否则跳转到步骤 05
+4.  跳转到仪表板页，流程结束
+5.  检查状态树是否已经储存非 -1 的角色值，是的话跳转到步骤 06，否则跳转到步骤 07
+6.  允许跳转，流程结束
+7.  发送请求更新 token，更新成功则跳转到步骤 08，否则跳转到步骤 09，生成路由表具体流程参见[动态路由表的生成与挂载](#动态路由表的生成与挂载)
+8.  重新触发导航守卫，流程结束
+9.  跳转到登录页，记录原本要前往的页面，流程结束
 10. 检查是否前往登录页，是的话跳转到步骤 06，否则跳转到步骤 09
 
 全局前置守卫不能阻止用户主动访问异常页，鉴于这种可能性非常低，可以不再做相关的判断。

@@ -89,7 +89,7 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 - [vuetify](https://vuetifyjs.com/en/) - A material design component framework for Vue.js
 - [vue-i18n](https://kazupon.github.io/vue-i18n/) - Internationalization plugin for Vue.js
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
-- [dayjs](https://github.com/iamkun/dayjs) - 使用相同的现代 API 替代[Moment.js](https://momentjs.com/docs/)的 2KB 不可变日期库
+- [dayjs](https://github.com/iamkun/dayjs) - 2KB immutable date library alternative to [Moment.js](https://momentjs.com/docs/) with the same modern API
 - [nprogress](https://github.com/rstacruz/nprogress) - Minimalist progress bar
 - [screenfull](https://github.com/sindresorhus/screenfull.js) - Simple wrapper for cross-browser usage of the JavaScript Fullscreen API
 - [vue-count-to](https://github.com/PanJiaChen/vue-countTo) - Count to a target number at a specified duration
@@ -133,7 +133,7 @@ TODO:
 
 ## Browsers Support
 
-Please read [.browerslistrc](./.browserslistrc) for details. You can get actual supported browsers [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead). Global coverage is 88.61%.
+Please read [package.json](./package.json) for details. You can get actual supported browsers on [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead).
 
 The default setting of vue-cli is showing below.
 

@@ -90,7 +90,7 @@ yarn start
 - [vue-i18n](https://kazupon.github.io/vue-i18n/)：Vue.js 的国际化插件
 - [axios](https://github.com/axios/axios)：基于 Promise 的 HTTP 客户端，用于浏览器和 node.js
 - [nprogress](https://github.com/rstacruz/nprogress)：极简主义进度条
-- [dayjs](https://github.com/iamkun/dayjs) - KB immutable date library alternative to [Moment.js](https://momentjs.com/docs/) with the same modern API
+- [dayjs](https://github.com/iamkun/dayjs) - 使用相同的现代 API 替代[Moment.js](https://momentjs.com/docs/)的 2KB 不可变日期库
 - [screenfull](https://github.com/sindresorhus/screenfull.js)：用于跨浏览器使用 JavaScript Fullscreen API 的简单包装器
 - [vue-count-to](https://github.com/PanJiaChen/vue-countTo)：在指定的持续时间内计入目标数
 - [vue-echarts](https://github.com/ecomfe/vue-echarts)：Vue.js 的 [ECharts](https://echarts.apache.org/en/index.html) 组件
@@ -132,7 +132,7 @@ TODO:
 
 ## 浏览器支持
 
-有关详细信息，请阅读 [.browerslistrc](./.browsersseslistrc)。你可以在 [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead) 查看实际支持的浏览器。全球覆盖率为 88.61％。
+有关详细信息，请阅读 [package.json](./package.json) browserslist 部分。你可以在 [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead) 查看实际支持的浏览器。
 
 下面是 vue-cli 的默认设置。
 

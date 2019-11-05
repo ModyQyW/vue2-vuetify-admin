@@ -16,9 +16,10 @@ Here are the plugins I personally use.
 - Beautify
 - Bootstrap 4, Font awesome 4, Font Awesome 5 & Pro snippets
 - Bracket Pair Colorizer 2
-- cml
 - Code Runner
 - Codelf
+- CodeSandbox
+- Comment Translate
 - CSS Peek
 - Document This
 - ESLint
@@ -32,22 +33,23 @@ Here are the plugins I personally use.
 - IntelliSense for CSS class names in HTML
 - JavaScript (ES6) code snippets
 - jQuery Code Snippets
-- language-stylus
 - LeetCode
 - Live Server
 - Lorem ipsum
+- Markdown All in One
 - Markdown Preview Enhanced
 - markdownlint
 - minapp
 - Path Autocomplete
 - Path Intellisense
+- Prettier
 - Project Manager
 - React Native Tools
 - React-Native/React/Redux snippets for es6/es7
 - Sorting HTML and Jade attributes
-- stylelint
 - TODO Highlight
 - TSLint
+- TypeScript Hero
 - TypeScript Importer
 - Vetur
 - vscode-element-helper
@@ -138,6 +140,14 @@ The configuration I personally use is given below.
       "autoFix": true,
     },
     {
+      "language": "typescript",
+      "autoFix": true,
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true,
+    },
+    {
       "language": "html",
       "autoFix": true
     },
@@ -180,9 +190,8 @@ The configuration I personally use is given below.
   "todohighlight.isEnable": true,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatter.js": "vscode-typescript",
-  "window.zoomLevel": -0.25,
+  "window.zoomLevel": -0.5,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "Default Light+",
   "workbench.startupEditor": "newUntitledFile",
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
@@ -192,7 +201,11 @@ The configuration I personally use is given below.
   },
   "[json]": {
     "editor.defaultFormatter": "HookyQR.beautify"
-  }
+  },
+  "workbench.colorTheme": "Default Light+",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "commentTranslate.targetLanguage": "zh-CN",
+  "commentTranslate.multiLineMerge": true
 }
 ```
 
@@ -204,7 +217,7 @@ The main goal of using JavaScript is to lower the threshold for getting started.
 
 ## ProjectStructure
 
-```sh
+```md
 ├── docs                   documents
 │   ├── usage              usage documents
 │   |   ├── README.CN.md
@@ -215,6 +228,7 @@ The main goal of using JavaScript is to lower the threshold for getting started.
 │   ├── assets             assets
 │   ├── components         global components
 │   ├── locales            internationalization json files
+│   ├── layout             global layout
 │   ├── plugins            plugins mounted to a vue instance
 │   │   ├── i18n.js        internationalization plugin
 │   │   ├── vuetify.js     vuetify plugin
@@ -228,36 +242,30 @@ The main goal of using JavaScript is to lower the threshold for getting started.
 │   ├── utils              utils used by serval files
 │   │   ├── nprogress.css  nprogress style
 │   │   ├── request.js     pack axios
-│   │   ├── user.js        User personal habits and token persistence
+│   │   ├── user.js        user personal habits and token persistence
 │   ├── views              page files
-│   ├── App.vue            Page entry, modify global styles, initial personal habits
+│   ├── App.vue            page entry, modify global styles, initial personal habits
 │   ├── guards.js          router navigation guards
 │   ├── main.js            mount
-├── tests                  tests(empty)
-├── .browserslistrc        Supported browsers used by babel to add polyfills on demand
 ├── .editorconfig          editor configuration
-├── .env                   Specify environment variables for all environments
-├── .eslintrc.js           eslint configuration
-├── .gitattributes
-├── .gitignore
+├── .env                   specify environment variables for all environments
+├── .gitignore             git ignore patterns
+├── .stylelintignore       stylelint ignore patterns
 ├── babel.config.js        babel configuration
 ├── CONTRIBUTING.md
-├── jest.config.js         jest configuration
 ├── LICENSE
-├── package.json           Declare dependencies and commands
-├── postcss.config.js      postcss configuration
+├── package.json           declare dependencies and commands
 ├── README.CN.md
 ├── README.md
-├── stylelint.config.js    stylelint configuration
 ├── vue.config.js          vue-cli configuration
 └── yarn.lock              lock dependencies' versions
 ```
 
 ## GlobalComponents
 
-A global component should be a component that is required by several pages or components.Using components within the community and vuetify is sufficient gennerlly, but you the need for custom components cannot be eliminated still.
+A global component should be a component that is required by several pages or components. Using components within the community and vuetify is sufficient gennerlly, but you the need for custom components cannot be eliminated still.
 
-If the custom component is used only in one page, you should create a new components folder in the corresponding page folder and put the custom component, refer to `@/views/layout`; if it is used in multiple pages, It should be placed in `@/components`.
+If the custom component is used only in one page, you should create a new components folder in the corresponding page folder and put the custom component, refer to `@/layout`; if it is used in multiple pages, It should be placed in `@/components`.
 
 ## Internationalization
 
@@ -306,15 +314,15 @@ A global before guard and a global after hook are used in this project, and the 
 
 The global before guard：
 
-01. start nprogress
-02. Check for token, jump to step 03 if there is token , otherwise jump to step 10
-03. Check if going to the login page, jump to step 04 if yes, otherwise jump to step 05
-04. Jump to the dashboard page, process ends
-05. Check that the vuex store has stored a role value but not -1, jump to step 06 if yes, otherwise jump to step 07
-06. Allow jumping, process ends
-07. Request to renew token, jump to step 08 if succeeded, otherwise jump to step 09, check [Generate&MountMutableRoutes](#Generate&MountMutableRoutes) for details
-08. Trigger navigation guards again, process ends
-09. Jump to the login page, record the page supposed to jump to, process ends
+1.  start nprogress
+2.  Check for token, jump to step 03 if there is token , otherwise jump to step 10
+3.  Check if going to the login page, jump to step 04 if yes, otherwise jump to step 05
+4.  Jump to the dashboard page, process ends
+5.  Check that the vuex store has stored a role value but not -1, jump to step 06 if yes, otherwise jump to step 07
+6.  Allow jumping, process ends
+7.  Request to renew token, jump to step 08 if succeeded, otherwise jump to step 09, check [Generate&MountMutableRoutes](#Generate&MountMutableRoutes) for details
+8.  Trigger navigation guards again, process ends
+9.  Jump to the login page, record the page supposed to jump to, process ends
 10. Check if going to the login page, jump to step 06 if yes, otherwise jump to step 09
 
 The global before guard cannot prevent users from jumping to exception pages proactively. But given the very low probability, it's fine to stop making the relevant judgment.
