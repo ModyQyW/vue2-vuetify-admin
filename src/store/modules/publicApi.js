@@ -48,7 +48,7 @@ const publicApi = {
      */
     getStarsAsync ({ state, commit }) {
       if (state.stars === 'Fetching' || state.stars === 'Failed') {
-        $req.get('https://api.github.com/repos/ModyQyW/vue-vuetify-admin')
+        $req.get('https://api.github.com/repos/ModyQyW/vue2-vuetify-admin')
           .then((res) => {
             if (Object.prototype.toString.call(res.stargazers_count).slice(8, -1) === 'Number') {
               commit('setStarsSync', { stars: res.stargazers_count.toString() })
@@ -66,7 +66,7 @@ const publicApi = {
      */
     getLanguagesAsync ({ state, commit }) {
       if (state.languages.length === 0) {
-        $req.get('https://api.github.com/repos/ModyQyW/vue-vuetify-admin/languages')
+        $req.get('https://api.github.com/repos/ModyQyW/vue2-vuetify-admin/languages')
           .then((res) => {
             if (res['Vue'] > 0) {
               let total = 0

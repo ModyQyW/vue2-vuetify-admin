@@ -1,4 +1,4 @@
-# vue-vuetify-admin
+# vue2-vuetify-admin
 
 使用 Vue 全家桶和 Vuetify UI 库构建的具有巨大潜力的简易后台管理模板。
 
@@ -18,9 +18,9 @@
   - 接着在终端/命令行安装长期支持版 node
 
     ```sh
-    # for now, lts version is 10.16.3
-    # last updated：2019.09.17
-    nvm install 10.16.3
+    # for now, lts version is 12.13.0
+    # last updated：2019.11.05
+    nvm install --lts
     ```
 
   - 全局升级 npm 到长期支持版，安装 yarn
@@ -40,10 +40,10 @@
 ```sh
 # terminal / command line 1
 # clone the project
-git clone git@github.com:ModyQyW/vue-vuetify-admin.git
+git clone git@github.com:ModyQyW/vue2-vuetify-admin.git
 
 # enter the project directory
-cd vue-vuetify-admin
+cd vue2-vuetify-admin
 
 # install dependency
 yarn
@@ -90,7 +90,7 @@ yarn start
 - [vue-i18n](https://kazupon.github.io/vue-i18n/)：Vue.js 的国际化插件
 - [axios](https://github.com/axios/axios)：基于 Promise 的 HTTP 客户端，用于浏览器和 node.js
 - [nprogress](https://github.com/rstacruz/nprogress)：极简主义进度条
-- [moment](https://momentjs.com/)：在 JavaScript 中解析，验证，操作和显示日期和时间
+- [dayjs](https://github.com/iamkun/dayjs) - KB immutable date library alternative to [Moment.js](https://momentjs.com/docs/) with the same modern API
 - [screenfull](https://github.com/sindresorhus/screenfull.js)：用于跨浏览器使用 JavaScript Fullscreen API 的简单包装器
 - [vue-count-to](https://github.com/PanJiaChen/vue-countTo)：在指定的持续时间内计入目标数
 - [vue-echarts](https://github.com/ecomfe/vue-echarts)：Vue.js 的 [ECharts](https://echarts.apache.org/en/index.html) 组件
@@ -147,13 +147,13 @@ last 2 versions
 
 ## 版本命名
 
-使用 [SemVer](http://semver.org/) 进行版本控制。有关可用版本，请参阅此仓库的 [releases](https://github.com/ModyQyW/vue-vuetify-admin/releases)。
+使用 [SemVer](http://semver.org/) 进行版本控制。有关可用版本，请参阅此仓库的 [releases](https://github.com/ModyQyW/vue2-vuetify-admin/releases)。
 
 ## 作者
 
 - **Rui Wu** - *最初工作* - [ModyQyW](https://github.com/ModyQyW)
 
-另请参阅参与此项目的 [contributors](https://github.com/ModyQyW/vue-vuetify-admin/contributors) 列表。
+另请参阅参与此项目的 [contributors](https://github.com/ModyQyW/vue2-vuetify-admin/contributors) 列表。
 
 ## 协议
 

@@ -1,5 +1,5 @@
 // the layout for most pages
-import Layout from '@/views/layout'
+import Layout from '@/layout'
 
 export default [
   {

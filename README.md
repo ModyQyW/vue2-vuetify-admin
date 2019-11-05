@@ -1,4 +1,4 @@
-# vue-vuetify-admin
+# vue2-vuetify-admin
 
 A simple admin template with huge potential, built with Vue family and Vuetify UI library.
 
@@ -18,9 +18,9 @@ These instructions will get you a copy of the project up and running on your loc
   - Then install node lts in terminal / command line
 
     ```sh
-    # for now, lts version is 10.16.3
-    # last updated: 2019.09.17
-    nvm install 10.16.3
+    # for now, lts version is 12.13.0
+    # last updated: 2019.11.05
+    nvm install --lts
     ```
 
   - Globally update npm to lts and install yarn
@@ -40,10 +40,10 @@ These instructions will get you a copy of the project up and running on your loc
 ```sh
 # terminal / command line 1
 # clone the project
-git clone git@github.com:ModyQyW/vue-vuetify-admin.git
+git clone git@github.com:ModyQyW/vue2-vuetify-admin.git
 
 # enter the project directory
-cd vue-vuetify-admin
+cd vue2-vuetify-admin
 
 # install dependency
 yarn
@@ -89,8 +89,8 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
 - [vuetify](https://vuetifyjs.com/en/) - A material design component framework for Vue.js
 - [vue-i18n](https://kazupon.github.io/vue-i18n/) - Internationalization plugin for Vue.js
 - [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [dayjs](https://github.com/iamkun/dayjs) - 使用相同的现代 API 替代[Moment.js](https://momentjs.com/docs/)的 2KB 不可变日期库
 - [nprogress](https://github.com/rstacruz/nprogress) - Minimalist progress bar
-- [moment](https://momentjs.com/) - Parse, validate, manipulate, and display dates and times in JavaScript
 - [screenfull](https://github.com/sindresorhus/screenfull.js) - Simple wrapper for cross-browser usage of the JavaScript Fullscreen API
 - [vue-count-to](https://github.com/PanJiaChen/vue-countTo) - Count to a target number at a specified duration
 - [vue-echarts](https://github.com/ecomfe/vue-echarts) - [ECharts](https://echarts.apache.org/en/index.html) component for Vue.js
@@ -148,13 +148,13 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on code of conduct,
 
 ## Versioning
 
-Use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases on this repository](https://github.com/ModyQyW/vue-vuetify-admin/releases).
+Use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases on this repository](https://github.com/ModyQyW/vue2-vuetify-admin/releases).
 
 ## Authors
 
 - **Rui Wu** - *Initial work* - [ModyQyW](https://github.com/ModyQyW)
 
-See also the list of [contributors](https://github.com/ModyQyW/vue-vuetify-admin/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/ModyQyW/vue2-vuetify-admin/contributors) who participated in this project.
 
 ## License
 

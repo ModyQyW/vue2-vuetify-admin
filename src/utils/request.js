@@ -9,7 +9,7 @@ const baseUrl = process.env.NODE_ENV === 'development' ? devUrl : prodUrl
 const urlWhiteList = ['api.github.com']
 
 // X-Version
-const version = 'vue-vuetify-admin/0.2.0'
+const version = 'vue2-vuetify-admin/0.2.0'
 
 // base url
 axios.defaults.baseURL = baseUrl

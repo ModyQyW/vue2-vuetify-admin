@@ -7,9 +7,7 @@ export default new Vuetify({
   theme: {
     options: {
       customProperties: true
-    }
-  },
-  icons: {
-    iconfont: 'mdi'
+    },
+    themes: {}
   }
 })

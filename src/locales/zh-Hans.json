@@ -16,7 +16,7 @@
     "pause": "暂停"
   },
   "hint": {
-    "projectName": "vue-vuetify-admin",
+    "projectName": "vue2-vuetify-admin",
     "username": "账号",
     "usernameRequired": "必须填写账号",
     "password": "密码",

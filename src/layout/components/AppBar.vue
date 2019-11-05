@@ -7,9 +7,9 @@
     <v-toolbar-title>
       <a
         class="text-uppercase white--text"
-        href="https://github.com/ModyQyW/vue-vuetify-admin"
+        href="https://github.com/ModyQyW/vue2-vuetify-admin"
       >
-        vue-vuetify-admin
+        vue2-vuetify-admin
       </a>
     </v-toolbar-title>
     <v-breadcrumbs
@@ -182,7 +182,7 @@ export default {
       screenfull.toggle()
     },
     handleToGithub () {
-      window.location = 'https://github.com/ModyQyW/vue-vuetify-admin'
+      window.location = 'https://github.com/ModyQyW/vue2-vuetify-admin'
     },
     handleLogout () {
       this.$store.dispatch('user/logoutAsync')

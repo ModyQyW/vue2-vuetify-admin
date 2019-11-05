@@ -16,7 +16,7 @@
     "pause": "Pause"
   },
   "hint": {
-    "projectName": "vue-vuetify-admin",
+    "projectName": "vue2-vuetify-admin",
     "username": "Username",
     "usernameRequired": "Username is required",
     "password": "Password",
