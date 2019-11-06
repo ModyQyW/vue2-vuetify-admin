@@ -46,7 +46,6 @@
 - React-Native/React/Redux snippets for es6/es7
 - Sorting HTML and Jade attributes
 - TODO Highlight
-- TSLint
 - TypeScript Hero
 - TypeScript Importer
 - Vetur
@@ -211,7 +210,7 @@
 
 本项目使用 JavaScript 开发，辅以 [JSDoc](https://jsdoc.app/)。
 
-使用 JavaScript 的主要目标是降低上手的门槛。
+使用 JavaScript 的主要目标是降低上手的门槛。未来将会使用 TypeScript 重构本项目。
 
 ## 项目结构
 
@@ -263,7 +262,7 @@
 
 全局组件应当是数个页面或组件都需要的组件，一般情况下，使用 vuetify 和社区内的组件就足够了，但仍不能排除需要自定义组件的情况。
 
-自定义组件假如只在一个页面内使用到，应当在对应页面的文件夹内新建 components 文件夹，并放入自定义组件，参考`@/layout`；假如在多个页面内使用到，则应放到`@/components`内。
+自定义组件假如只在一个页面内使用到，应当在对应页面的文件夹内新建`components`文件夹，并放入自定义组件，参考`@/layout`；假如在多个页面内使用到，则应放到`@/components`内。
 
 ## 国际化
 
@@ -277,7 +276,7 @@
 要添加、使用更多语言：
 
 - 首先在`@/locales`创建一个新语言文件，命名为`${language}.json`
-- 然后在该语言文件中添加其他国际化 json 文件均有的字段和释义
+- 然后在新文件中添加其他国际化 json 文件均有的字段和释义
 
 ## 网络请求
 
@@ -329,42 +328,41 @@ Cookie 有着诸多限制和问题，不建议使用。
 
 ## 路由
 
-本项目采用的是比较严格的路由约定，一来是为了简化路由渲染，减少需要考虑的情况，二来是结合我自身碰到的实际业务来看，路由不应该、也不会太过于繁琐与复杂。
+本项目采用的是比较严格的约定式路由，一来是为了简化路由渲染，减少需要考虑的情况，二来是结合我自身碰到的实际业务来看，路由不应该、也不会太过于繁琐与复杂。
 
-一个路由项的结构如下所示：
+一个路由项的结构如下所示（使用 TypeScript）。
 
-```json
-{
-  name: '<String, 路由名称>',
-  path: '<String, 路由路径>',
-  component: '<(Function|Component), 承载页面的组件>',
-  meta: {
-    roles: '<Number[], 角色数组, 默认为空数组, 表示所有角色都能进入>',
-    title: '<String, 会被国际化处理的显示在抽屉导航的路由标题, 默认为空字符串>',
-    hidden: '<Boolean, 路由是否不出现在抽屉导航中, 默认为否>',
-    icon: '<String, 深度 1 路由 icon 名称, 默认为空字符串>',
-  },
-  children: '<Route[], 子路由数组>'
+```ts
+interface IRoute {
+  name: string; // 路由名称
+  path: string; // 路由路径
+  component?: () => Promise<typeof import("*.vue")> | VueConstructor<Vue>; // 异步引入组件/组件
+  meta?: {
+    roles?: number[]; // 角色数组，默认为 []，表示所有角色都能进入该路由
+    title?: string; // 会被国际化处理的显示在抽屉导航的路由标题, 默认为 ''
+    hidden?: boolean; // 路由是否不出现在抽屉导航中，默认为 false
+    icon: string; // 深度一的路由 icon 名称，默认为 ''
+  };
+  children?: IRoute[]; // 子路由数组
 }
 ```
 
-本项目路由深度建议最大为 3：
+本项目路由深度最大为 3：
 
 - 深度 1：会在抽屉导航渲染为`v-list-item`组件或`v-list-group`组件
 - 深度 2：会在抽屉导航渲染为`v-list-item`组件或`v-list-group`组件
 - 深度 3：会在抽屉导航渲染为`v-list-item`组件
 
-抽屉导航默认已经在预设的全局布局组件当中。
+抽屉导航默认已经在预设的全局布局当中。
 
-绝大多数情况下，深度 3 已经足够使用了，假如还要更大的深度，我认为应该要反过来思考是不是能够缩减路由深度。
+绝大多数情况下，深度 3 已经足够使用了。假如还要更大的深度，我认为应该要反过来思考是不是能够缩减路由深度。
 
-以`route`表示路由项，其父路由项为`parentRoute`，其子女路由项（特指，下面简称子路由项）为`childRoute`，深度 x 的路由项用`routeDx`表示，说明一些约定的规则，如下所示，注意：你需要按照规则进行自行配置，本项目只是按照这些规则进行了渲染。
+用`route`表示某一路由项，其父母路由项为`parentRoute`，其子女路由为`childRoute`，用`routeDx`表示深度 x 的路由项，说明一些约定的规则，如下所示。注意：你需要按照规则进行自行配置，本项目只是按照这些规则进行了渲染。
 
 - 面包屑的自动生成、预设的页面跳转均通过`route.name`完成，即`route.name`是必需的，同时其赋值需要遵循以下规则
   - `route.name` = `${parentRoute.name}-${route.path}`
-  - 特例：`routeD1`没有`childRoute`，则`routeD1.name` = `routeD1.path.slice(1)`
+  - 特例：`routeD1`没有`childRoute`或`childRoute`总数大于1，则`routeD1.name` = `routeD1.path.slice(1)`
   - 特例：`routeD1`的`childRoute`的总数为 1，则`routeD1.name`无需再填写，`childRoute.path`为空字符串，`childRoute.name` = `routeD1.path.slice(1)`
-  - 特例：`routeD1`的`childRoute`的总数大于 1，则`routeD1.name` = `routeD1.path.slice(1)`
 - `route.path`是字符串，要么是一个单词，要么为空
   - 特例：`routeD1.path`必须以`/`开头
 - 除了某些用于调整抽屉导航显示的路由项（下面会提到），`route.component`是必需的
@@ -373,9 +371,10 @@ Cookie 有着诸多限制和问题，不建议使用。
 - 某一`routeD1`没有`childRoute`，则不会渲染到抽屉导航中，参考 [@/router/modules/authentication](../../src/router/modules/authentication.js)
 - 某一`routeD1`的`childRoute`的总数为 1，则`childRoute.path`应为空字符串，渲染的抽屉导航项的信息优先取`childRoute`的信息，其次取`routeD1`的信息，参考 [@/router/modules/chart](../../src/router/modules/chart.js)
 - 某一`routeD1`的`childRoute`的总数大于 1，则`routeD1`必然会被渲染，根据`childRoute.meta.hidden`决定`childRoute`是否渲染，参考 [@/router/modules/editor.js](../../src/router/modules/editor.js)
-  - PS：`childRoute.meta.hidden`均为 truthy 值，则能展开，但没有子项
-  - PPS：`childRoute.meta.hidden`只有一个为 falsy 值，则展开只有一个子项
-- 任一`routeD2`的`childRoute`渲染情况，可以参考以上两条规则，特别地，`routeD2`的`childRoute`，即`routeD3`，即使没有`childRoute`，也会根据`routeD3.meta.hidden`的值来确定是否渲染，`routeD3`的`childRoute`渲染情况同理，参考 [@/router/modules/nested](../../src/router/modules/nested.js)
+  - PS：`childRoute.meta.hidden`均为 truthy 值，则能展开`routeD1`，但不会渲染出`childRoute`
+  - PPS：`childRoute.meta.hidden`只有一个为 falsy 值，则`routeD1`展开只有一个`childRoute`
+- 任一`routeD2`的`childRoute`渲染情况，可以参考以上两条规则
+  - 特别地，`routeD2`的`childRoute`，即`routeD3`，会根据`routeD3.meta.hidden`来确定是否渲染，参考 [@/router/modules/nested](../../src/router/modules/nested.js)
 
 ## 抽屉导航渲染路由
 
@@ -400,24 +399,24 @@ Cookie 有着诸多限制和问题，不建议使用。
 
 ## 路由深度
 
-是不是路由深度最大就只能是 3 呢？实际上不然，只要遵循以上的规则，大可以有无限层路由。
+是不是路由深度最大就只能是 3 呢？实际上不然，只要遵循以上的规则，可以有无限层路由。
 
-但是为什么建议最大是 3？一方面，深度最大是 3 在一定程度上限制了路由的数量，另一方面，vuetify 并没有考虑到更大深度的情况，如果需要更大的深度，需要自行进行定制。
+但是为什么建议最大是 3？一方面，在一定程度上限制了路由的数量。另一方面，vuetify 并没有考虑到更大深度的情况，如果需要更大的深度，需要自行进行定制。
 
 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 的侧边栏是无限递归的，如有需求可以前往查看。
 
 ## 动态路由的生成与挂载
 
-请求登录接口和更新 token 接口（参见 [@/store/modules/user](../../src/store/modules/user.js) `loginAsync`和`renewTokenAsync`）成功后会使用`setInfoSync`同步设置用户信息，随后通过`generateRoutesSync`同步生成动态路由表，接着调用 router 的`addRoutes`api 挂载动态路由表。
+请求登录接口和更新 token 接口（参见 [@/store/modules/user](../../src/store/modules/user.js) `loginAsync`和`renewTokenAsync`）成功后，会使用`setInfoSync`同步设置用户信息，随后通过`generateRoutesSync`同步生成动态路由表，接着调用 vue-router 的`addRoutes`api 挂载动态路由表。
 
-`generateRoutesSync`会根据传入的用户角色来进行筛选，倘若用户角色能访问所有路由，直接返回所有动态路由`mutableRoutes`，否则调用`filterMutableRoutes`对`mutableRoutes`进行递归筛选。将所得的动态路由表`routesNeedAdd`保存到`state.routesNeedAdd`，并将静态路由表`immutableRoutes`与所得的动态路由表`routesNeedAdd`拼接得到完整路由表，保存到`state.routes`。挂载动态路由表时，使用`state.routesNeedAdd`即可。
+`generateRoutesSync`会根据传入的用户角色来进行筛选。倘若用户角色能访问所有路由，直接返回所有动态路由`mutableRoutes`，否则调用`filterMutableRoutes`对`mutableRoutes`进行递归筛选。将所得的动态路由表`routesNeedAdd`保存到`state.routesNeedAdd`，并将静态路由表`immutableRoutes`与所得的动态路由表`routesNeedAdd`拼接得到完整路由表，保存到`state.routes`。挂载动态路由表时，使用`state.routesNeedAdd`即可。
 
-`filterMutableRoutes`方法大概思路是遍历`mutableRoutes`，如果某个路由项是允许该用户角色访问的，检查该路由项有没有`children`，没有的话不用管，直接保存到新数组中，有的话递归处理，确保该路由项的`children`都是允许该用户角色访问的，最终也把处理后的路由项保存到新数组中。最终得到的新数组，便是允许该用户角色访问的路由表。详见 [@/utils/user](../../src/utils/user.js)。
+`filterMutableRoutes`方法大概思路是遍历`mutableRoutes`。如果某个路由项是允许该用户角色访问的，检查该路由项有没有`children`，没有的话不用管，直接保存到新数组中，有的话递归处理，确保该路由项的`children`都是允许该用户角色访问的，最终也把处理后的路由项保存到新数组中。最终得到的新数组，便是允许该用户角色访问的路由表。详见 [@/utils/user](../../src/utils/user.js)。
 
 ## 重置路由
 
-动态路由表的重置涉及到 vue-router 的原理，此处不详细描述，直接参见代码 [@/router/index](../../src/router/index.js)`resetRouter`方法。
+动态路由表的重置涉及到 vue-router 的原理，此处不详细描述。直接参见代码 [@/router/index](../../src/router/index.js)`resetRouter`方法。
 
 ## 工具类、工具方法、工具函数
 
-本项目会封装简单的工具类、工具方法、工具函数到`@/utils`文件夹下。假如比较复杂，建议搜索看是否有现成库可以使用，为缩减打包体积，可以配置`externals`。
+本项目会封装简单的工具类、工具方法、工具函数到`@/utils`文件夹下。假如比较复杂，建议搜索看是否有现成库可以使用。为缩减打包体积，可以配置`externals`。
