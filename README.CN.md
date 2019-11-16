@@ -18,8 +18,6 @@
   - 接着在终端/命令行安装长期支持版 node
 
     ```sh
-    # for now, lts version is 12.13.0
-    # last updated：2019.11.05
     nvm install --lts
     ```
 
