@@ -120,14 +120,6 @@ You can get more information on [vue-cli Browser Compatibility](https://cli.vuej
   - Rich text editor
 - File: save & zip
 
-TODO:
-
-- Clipboard
-- Excel
-  - Excel upload
-  - Excel preview
-  - Excel download
-
 ## Browsers Support
 
 Please read [package.json](./package.json) for details. You can get actual supported browsers on [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead).

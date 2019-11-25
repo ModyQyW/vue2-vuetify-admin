@@ -68,7 +68,7 @@ const publicApi = {
       if (state.languages.length === 0) {
         $req.get('https://api.github.com/repos/ModyQyW/vue2-vuetify-admin/languages')
           .then((res) => {
-            if (res['Vue'] > 0) {
+            if (res.Vue > 0) {
               let total = 0
               const keys = Object.keys(res)
               keys.forEach((key) => {

@@ -16,25 +16,23 @@
     "@toast-ui/vue-editor": "^1.1.1",
     "axios": "^0.19.0",
     "codemirror": "^5.49.2",
-    "core-js": "^3.3.6",
-    "dayjs": "^1.8.16",
-    "echarts": "^4.4.0",
+    "core-js": "^3.4.2",
+    "dayjs": "^1.8.17",
+    "echarts": "^4.5.0",
     "file-saver": "^2.0.2",
     "jszip": "^3.2.2",
     "nprogress": "^0.2.0",
     "quill": "^1.3.7",
     "screenfull": "^5.0.0",
     "vue": "^2.6.10",
-    "vue-clipboard2": "^0.3.1",
     "vue-count-to": "^1.0.13",
     "vue-echarts": "^4.0.4",
     "vue-i18n": "^8.0.0",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.1.3",
     "vuedraggable": "^2.23.2",
-    "vuetify": "^2.1.0",
-    "vuex": "^3.1.1",
-    "xlsx": "^0.15.1",
+    "vuetify": "^2.1.11",
+    "vuex": "^3.1.2",
     "xss": "^1.0.6"
   },
   "devDependencies": {
@@ -44,22 +42,26 @@
     "@vue/cli-plugin-router": "^4.0.5",
     "@vue/cli-plugin-vuex": "^4.0.5",
     "@vue/cli-service": "^4.0.5",
-    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/eslint-config-standard": "^5.0.0",
     "babel-eslint": "^10.0.3",
     "compression-webpack-plugin": "^3.0.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "lint-staged": "^9.4.2",
-    "sass": "^1.23.3",
+    "eslint": "^6.7.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.0.1",
+    "lint-staged": "^9.4.3",
+    "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
-    "stylelint": "^11.1.1",
+    "stylelint": "^12.0.0",
     "stylelint-codeframe-formatter": "^1.0.4",
-    "stylelint-config-twbs-bootstrap": "^0.9.0",
-    "stylelint-webpack-plugin": "^1.0.3",
+    "stylelint-config-twbs-bootstrap": "^1.0.0",
+    "stylelint-webpack-plugin": "^1.1.0",
     "vue-cli-plugin-i18n": "^0.6.0",
-    "vue-cli-plugin-vuetify": "^2.0.1",
+    "vue-cli-plugin-vuetify": "^2.0.2",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.3.0"
+    "vuetify-loader": "^1.4.1"
   },
   "eslintConfig": {
     "root": true,
@@ -80,6 +82,15 @@
       "autoprefixer": {}
     }
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-twbs-bootstrap/scss"
+    ],
+    "rules": {
+      "color-hex-case": "upper",
+      "declaration-no-important": null
+    }
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -93,14 +104,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-twbs-bootstrap/scss"
-    ],
-    "rules": {
-      "color-hex-case": "upper",
-      "declaration-no-important": null
-    }
   }
 }

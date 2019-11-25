@@ -120,14 +120,6 @@ yarn start
   - 富文本编辑器
 - 文件：保存与压缩
 
-TODO:
-
-- 剪贴板
-- Excel
-  - Excel 上传
-  - Excel 预览
-  - Excel 下载
-
 ## 浏览器支持
 
 有关详细信息，请阅读 [package.json](./package.json) browserslist 部分。你可以在 [browserl.ist](https://browserl.ist/?q=%3E0.25%25+and+last+2+versions+and+not+dead) 查看实际支持的浏览器。
