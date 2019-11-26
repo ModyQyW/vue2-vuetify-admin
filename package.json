@@ -61,7 +61,7 @@
     "vue-cli-plugin-i18n": "^0.6.0",
     "vue-cli-plugin-vuetify": "^2.0.2",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.4.1"
+    "vuetify-loader": "^1.4.2"
   },
   "eslintConfig": {
     "root": true,
