@@ -9,7 +9,7 @@
     "build:modern": "vue-cli-service build --report --modern",
     "dev": "vue-cli-service serve",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --fix",
     "serve": "vue-cli-service serve"
   },
   "dependencies": {
@@ -87,7 +87,6 @@
       "stylelint-config-twbs-bootstrap/scss"
     ],
     "rules": {
-      "color-hex-case": "upper",
       "declaration-no-important": null,
       "selector-max-class": 8,
       "selector-max-combinators": 8,

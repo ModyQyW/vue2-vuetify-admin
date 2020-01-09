@@ -184,7 +184,7 @@ export default {
 
 <style lang="scss" scoped>
 .white-container {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .transition-group {
@@ -197,7 +197,7 @@ export default {
 }
 
 .ghost {
-  background: #C8EBFB;
+  background: #c8ebfb;
   opacity: .5;
 }
 

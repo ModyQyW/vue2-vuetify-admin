@@ -15,15 +15,18 @@ Here are the plugins I personally use.
 
 - [aiXcoder](https://www.aixcoder.com/)
 - Ant Design Snippets
+- any-rule
 - Auto Close Tag
 - Beautify
 - Bootstrap 4, Font awesome 4, Font Awesome 5 & Pro snippets
 - Bracket Pair Colorizer 2
 - Code Runner
+- Code Spell Checker
 - Codelf
-- CodeSandbox
 - Comment Translate
 - CSS Peek
+- Debugger for Chrome
+- Debugger for Firefox
 - Document This
 - ESLint
 - filesize
@@ -31,8 +34,9 @@ Here are the plugins I personally use.
 - HTML Snippets
 - HTMLHint
 - Icon Fonts
-- Icon Fonts (Legacy)
+- Image preview
 - Import Cost
+- Indent-rainbow
 - IntelliSense for CSS class names in HTML
 - JavaScript (ES6) code snippets
 - jQuery Code Snippets
@@ -42,6 +46,8 @@ Here are the plugins I personally use.
 - Markdown All in One
 - Markdown Preview Enhanced
 - markdownlint
+- Material Icon Theme
+- Material Theme
 - minapp
 - Path Autocomplete
 - Path Intellisense
@@ -49,15 +55,22 @@ Here are the plugins I personally use.
 - Project Manager
 - React Native Tools
 - React-Native/React/Redux snippets for es6/es7
+- REST Clint
+- Sass
+- SCSS IntelliSense
+- Settings Sync
 - Sorting HTML and Jade attributes
+- SVG Viewer
 - TODO Highlight
 - TypeScript Hero
 - TypeScript Importer
+- uniapp-snippet
 - Vetur
+- Visual Studio IntelliCode
 - vscode-element-helper
 - vscode-fileheader
-- vscode-icons
 - Vue Peek
+- vuetify-vscode
 - wpy-beautify
 
 The configuration I personally use is given below.
@@ -91,6 +104,7 @@ The configuration I personally use is given below.
     "v-html",
     "v-html.+",
     "class",
+    "className",
     "v-on.+",
     "@.+",
     "name",
@@ -107,9 +121,12 @@ The configuration I personally use is given below.
     "aria-.+",
     "$unknown$"
   ],
+  "commentTranslate.targetLanguage": "zh-CN",
+  "commentTranslate.multiLineMerge": true,
   "css.validate": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
+    "source.fixAll.tslint": true,
+    "source.fixAll.eslint": true
   },
   "editor.detectIndentation": false,
   "editor.fontFamily": "-apple-system, Menlo, 'Fira Code', 'sarasa mono t sc', Monaco, 'Courier New', monospace",
@@ -128,36 +145,11 @@ The configuration I personally use is given below.
     "vue": "html"
   },
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
   "eslint.options": {
     "experimentalDecorators": true
   },
-  "eslint.validate": [
-    {
-      "language": "javascript",
-      "autoFix": true,
-    },
-    {
-      "language": "javascriptreact",
-      "autoFix": true,
-    },
-    {
-      "language": "typescript",
-      "autoFix": true,
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true,
-    },
-    {
-      "language": "html",
-      "autoFix": true
-    },
-    {
-      "language": "vue",
-      "autoFix": true
-    }
-  ],
+  "eslint.run": "onSave",
+  "eslint.validate": ["javascript","javascriptreact","typescript","typescriptreact","html","vue"],
   "files.eol": "\n",
   "files.associations": {
     "*.cjson": "jsonc",
@@ -182,18 +174,22 @@ The configuration I personally use is given below.
     "**/*.jsx",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.vue",
     "**/*.html",
     "**/*.php",
     "**/*.css",
+    "**/*.sass",
     "**/*.scss",
-    "**/*.vue",
+    "**/*.less",
     "**/*.styl"
   ],
   "todohighlight.isEnable": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatter.js": "vscode-typescript",
-  "window.zoomLevel": -0.5,
-  "workbench.iconTheme": "vscode-icons",
+  "window.zoomLevel": -1,
+  "workbench.colorTheme": "Material Theme Darker",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
@@ -203,11 +199,7 @@ The configuration I personally use is given below.
   },
   "[json]": {
     "editor.defaultFormatter": "HookyQR.beautify"
-  },
-  "workbench.colorTheme": "Default Light+",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "commentTranslate.targetLanguage": "zh-CN",
-  "commentTranslate.multiLineMerge": true
+  }
 }
 ```
 
@@ -229,8 +221,10 @@ The main goal of using JavaScript is to lower the threshold for getting started.
 ├── src
 │   ├── assets             assets
 │   ├── components         global components
-│   ├── locales            internationalization json files
 │   ├── layout             global layout
+│   ├── locales            internationalization json files
+│   ├── mixins             mixins
+│   │   ├── nprogress.scss nprogress style
 │   ├── plugins            plugins mounted to a vue instance
 │   │   ├── i18n.js        internationalization plugin
 │   │   ├── vuetify.js     vuetify plugin
@@ -242,7 +236,6 @@ The main goal of using JavaScript is to lower the threshold for getting started.
 │   │   ├── modules        vuex modules
 │   │   ├── index.js       expose a vuex instance
 │   ├── utils              utils used by serval files
-│   │   ├── nprogress.css  nprogress style
 │   │   ├── request.js     pack axios
 │   │   ├── user.js        user personal habits and token persistence
 │   ├── views              page files
@@ -252,7 +245,6 @@ The main goal of using JavaScript is to lower the threshold for getting started.
 ├── .editorconfig          editor configuration
 ├── .env                   specify environment variables for all environments
 ├── .gitignore             git ignore patterns
-├── .stylelintignore       stylelint ignore patterns
 ├── babel.config.js        babel configuration
 ├── CONTRIBUTING.md
 ├── LICENSE

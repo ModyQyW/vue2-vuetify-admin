@@ -15,7 +15,7 @@ export default {
 <style lang="scss">
 /* stylelint-disable selector-class-pattern */
 .v-breadcrumbs__item {
-  color: #FFF !important;
+  color: #fff !important;
 }
 
 .v-breadcrumbs {
