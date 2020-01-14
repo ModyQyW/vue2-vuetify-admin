@@ -1,76 +1,69 @@
 const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin')
+const StylelintCodeframeFormatter = require('stylelint-codeframe-formatter')
 
 const isProd = process.env.NODE_ENV === 'production'
 const prodGzipExt = ['html', 'js', 'css', 'json', 'ttf', 'eot', 'otf', 'woff', 'woff2', 'svg', 'png',
   'gif', 'jpg', 'jpeg', 'bmp', 'webp', 'webm', 'flv', 'ogg', 'wav', 'mp3', 'mp4']
 
 module.exports = {
-  chainWebpack: (config) => {
-    // set alias
-    config.resolve.alias
-      .set('@', path.resolve(__dirname, 'src'))
-      .set('@a', path.resolve(__dirname, 'src', 'assets'))
-      .set('@c', path.resolve(__dirname, 'src', 'components'))
-      .set('@m', path.resolve(__dirname, 'src', 'mixins'))
-      .set('@u', path.resolve(__dirname, 'src', 'utils'))
-    // split chunks
-    config.when(
-      isProd,
-      (config) => {
-        config.optimization
-          .splitChunks({
-            chunks: 'all',
-            cacheGroups: {
-              libs: {
-                chunks: 'initial',
-                name: 'chunk-libs',
-                priority: 10,
-                test: /[\\/]node_modules[\\/]/
-              },
-              vuetify: {
-                name: 'chunk-vuetify',
-                priority: 20,
-                test: /[\\/]node_modules[\\/]_?vuetify(.*)/
-              },
-              comp: {
-                minChunks: 3,
-                name: 'chunk-comp',
-                priority: 5,
-                reuseExistingChunk: true,
-                test: path.resolve('src', 'components')
-              }
-            }
-          })
-      }
-    )
-  },
-
   configureWebpack: (config) => {
+    // add stylelint plugin
     config.plugins.push(
-      // stylelint
       new StylelintWebpackPlugin({
-        files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
-        formatter: require('stylelint-codeframe-formatter')
+        files: ['src/**/*.{vue,htm,html,css,sass,less,scss}'],
+        fix: true,
+        formatter: StylelintCodeframeFormatter
       })
     )
+    // set alias
+    config.resolve.alias = {
+      '@': path.resolve(__dirname, 'src'),
+      '@a': path.resolve(__dirname, 'src', 'assets'),
+      '@c': path.resolve(__dirname, 'src', 'components'),
+      '@m': path.resolve(__dirname, 'src', 'mixins'),
+      '@u': path.resolve(__dirname, 'src', 'utils')
+    }
     if (isProd) {
-      // externals
+      // set externals
       config.externals = {
         vue: 'Vue',
         'vue-router': 'VueRouter',
         vuex: 'Vuex',
         axios: 'axios'
       }
-      // add plugins
+      // add gzip plugin
       config.plugins.push(
-        // gzip
         new CompressionWebpackPlugin({
           test: new RegExp(`\\.(${prodGzipExt.join('|')})$`),
           threshold: 0
         })
       )
+      // split chunks
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          libs: {
+            chunks: 'initial',
+            name: 'chunk-libs',
+            priority: 10,
+            test: /[\\/]node_modules[\\/]/
+          },
+          vuetify: {
+            name: 'chunk-vuetify',
+            priority: 20,
+            test: /[\\/]node_modules[\\/]_?vuetify(.*)/
+          },
+          comp: {
+            minChunks: 3,
+            name: 'chunk-comp',
+            priority: 5,
+            reuseExistingChunk: true,
+            test: path.resolve('src', 'components')
+          }
+        }
+      }
     }
   },
 
