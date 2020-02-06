@@ -102,7 +102,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "./src/**/*.{js,vue}": [
+    "*.{js,vue}": [
       "vue-cli-service lint",
       "git add"
     ]
