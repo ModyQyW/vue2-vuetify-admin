@@ -23,7 +23,7 @@
 
     <!-- app-content -->
     <v-content app>
-      <router-view :key="this.$route.name" />
+      <router-view />
     </v-content>
   </v-app>
 </template>
