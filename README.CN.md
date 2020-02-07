@@ -10,12 +10,12 @@
 
 ### 准备
 
-- 推荐使用 nvm，长期支持版 lts node，长期支持版 npm 和 yarn
+- 推荐使用 nvm，长期支持版即 lts 版 node，长期支持版 npm 和 yarn
   - 参照以下链接，首先安装 nvm
     - [nvm for Mac/Linux](https://github.com/nvm-sh/nvm)
     - [nvm-windows](https://github.com/coreybutler/nvm-windows)
-    - 使用 [Homebrew](https://brew.sh/) 在 Mac 安装 nvm 是**不**推荐的
-  - 接着在终端/命令行安装长期支持版 node
+    - **不**推荐使用 [Homebrew](https://brew.sh/) 在 Mac 安装 nvm
+  - 接着在 shell 中使用 nvm 安装长期支持版 node
 
     ```sh
     nvm install --lts
@@ -31,7 +31,7 @@
   - 如果你是国人，或许你应该设置镜像
 - Git 也是需要的
   - [git for Windows/Linux](https://git-scm.com/downloads)
-  - 使用 [Homebrew](https://brew.sh/) 在 Mac 安装 git 是推荐的
+  - 推荐使用 [Homebrew](https://brew.sh/) 在 Mac 安装 git
 
 ### 安装
 
@@ -88,7 +88,7 @@ yarn start
 - [vue-i18n](https://kazupon.github.io/vue-i18n/)：Vue.js 的国际化插件
 - [axios](https://github.com/axios/axios)：基于 Promise 的 HTTP 客户端，用于浏览器和 node.js
 - [nprogress](https://github.com/rstacruz/nprogress)：极简主义进度条
-- [dayjs](https://github.com/iamkun/dayjs) - 使用相同的现代 API 替代[Moment.js](https://momentjs.com/docs/)的 2KB 不可变日期库
+- [dayjs](https://github.com/iamkun/dayjs) - 使用相同的现代 API 替代 [Moment.js](https://momentjs.com/docs/) 的 2KB 不可变日期库
 - [screenfull](https://github.com/sindresorhus/screenfull.js)：用于跨浏览器使用 JavaScript Fullscreen API 的简单包装器
 - [vue-count-to](https://github.com/PanJiaChen/vue-countTo)：在指定的持续时间内计入目标数
 - [vue-echarts](https://github.com/ecomfe/vue-echarts)：Vue.js 的 [ECharts](https://echarts.apache.org/en/index.html) 组件
