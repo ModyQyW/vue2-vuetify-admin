@@ -1,5 +1,9 @@
 # vue2-vuetify-admin
 
+**DEPRECATED!**
+
+**Better choice: [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin), [vue-vuetify-admin](https://github.com/NelsonEAX/vue-vuetify-admin), [vue-admin-vuetify](https://github.com/vasttian/vue-admin-vuetify), [vuetify-admin-dashboard](https://github.com/ClintOxx/vuetify-admin-dashboard).**
+
 A simple admin template with huge potential, built with Vue family and Vuetify UI library.
 
 English | [简体中文](README.CN.md)

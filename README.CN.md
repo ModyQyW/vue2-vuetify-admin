@@ -1,5 +1,9 @@
 # vue2-vuetify-admin
 
+**已废弃。**
+
+**请移步：[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，[vue-vuetify-admin](https://github.com/NelsonEAX/vue-vuetify-admin)，[vue-admin-vuetify](https://github.com/vasttian/vue-admin-vuetify)，[vuetify-admin-dashboard](https://github.com/ClintOxx/vuetify-admin-dashboard)。**
+
 使用 Vue 全家桶和 Vuetify UI 库构建的具有巨大潜力的简易后台管理模板。
 
 [English](README.md) | 简体中文
